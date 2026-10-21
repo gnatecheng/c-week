@@ -37,9 +37,11 @@ export const privacyBodyZh = `
   <li>卸载应用通常会删除应用内数据；换机或重装前请先使用应用内备份（如有）</li>
   <li>正式签名版本与测试版 / 旧签名版可能无法互相覆盖安装；强制卸载会丢数据，请先备份</li>
 </ul>
+<h3>网站访问日志（etais.dev）</h3>
+<p>本介绍网站 <strong>etais.dev</strong> 会在服务器侧记录<strong>页面访问日志</strong>（不含图片、脚本、样式等静态资源请求）。日志字段包括：访问时间（UTC）、IP 地址、请求的页面路径与查询串、HTTP 状态、Referer、浏览器 User-Agent、Accept-Language，以及 Cloudflare 提供的<strong>大致地理位置</strong>（国家/地区/城市）与 ASN 等网络信息。日志存储在 <strong>Cloudflare D1</strong> 数据库中，<strong>长期保留</strong>（无自动删除），仅用于<strong>流量统计与滥用防护</strong>，不会出售或与广告商共享。各 Android 应用本身仍不收集、不上传你的业务数据。</p>
+<p>网站另使用 Cloudflare Web Analytics 汇总访问趋势（与各 APK 内的数据处理无关）。</p>
 <h3>第三方与开源</h3>
 <p>从 GitHub Releases、酷安、Google Play 等渠道下载时，该渠道可能有自己的下载与账号政策。应用依赖的开源库按其许可证使用；我们不会借此引入追踪类服务。</p>
-<p>本介绍网站 etais.dev 使用 Cloudflare Web Analytics 统计访问（与各 Android APK 内的数据处理无关）。</p>
 <h3>政策变更</h3>
 <p>若本政策有实质变更，我们会更新本页的生效日期，并在合理范围内通过官网或应用更新说明提示。</p>
 <h3>联系方式</h3>
@@ -83,9 +85,11 @@ export const privacyBodyEn = `
   <li>Uninstalling usually deletes app data; back up before reinstalling or switching phones</li>
   <li>Release-signed builds may not overwrite older debug or differently signed builds; uninstalling to fix a signature conflict deletes local data unless you backed up first</li>
 </ul>
+<h3>Website visit logs (etais.dev)</h3>
+<p>The marketing site <strong>etais.dev</strong> records <strong>page visit logs</strong> on the server (not requests for images, scripts, stylesheets, or other static assets). Log fields include: timestamp (UTC), IP address, page path and query string, HTTP status, Referer, browser User-Agent, Accept-Language, and <strong>approximate location</strong> from Cloudflare (country/region/city) plus ASN where available. Logs are stored in a <strong>Cloudflare D1</strong> database, <strong>retained long-term</strong> (no automatic deletion), and used only for <strong>traffic statistics and abuse prevention</strong>—not sold or shared with advertisers. The Android apps themselves still do not collect or upload your in-app data.</p>
+<p>The site also uses Cloudflare Web Analytics for aggregated traffic trends (separate from data handling inside the apps).</p>
 <h3>Third parties and open source</h3>
 <p>Download stores (GitHub Releases, Coolapk, Google Play, etc.) have their own policies separate from how data is handled inside the apps. Open-source libraries are used under their licenses; we do not use them to add tracking services.</p>
-<p>The etais.dev website uses Cloudflare Web Analytics (separate from data handling inside the Android apps).</p>
 <h3>Changes</h3>
 <p>If this policy changes in a material way, we will update the effective date on this page and note it in release notes or on the website where practical.</p>
 <h3>Contact</h3>
