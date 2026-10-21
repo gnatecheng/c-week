@@ -3,8 +3,8 @@
  * Import here in build scripts — do not hardcode lower values in replace() rules.
  */
 
-export const CSS_V = 31;
-export const TRANSLATIONS_V = 36;
+export const CSS_V = 32;
+export const TRANSLATIONS_V = 37;
 export const SITE_JS_V = 11;
 export const SECTION_NAV_JS_V = 6;
 export const INIT_THEME_V = 4;

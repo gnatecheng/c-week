@@ -57,7 +57,7 @@ jobs:
           SDKM="$(ls -d "${ANDROID_HOME}"/cmdline-tools/*/bin/sdkmanager | sort -V | tail -n 1)"
           echo "sdkmanager=${SDKM}"
           yes | "${SDKM}" --licenses >/dev/null || true
-          "${SDKM}" "platforms;android-35" "build-tools;35.0.0"
+          "${SDKM}" "platforms;android-36" "build-tools;36.0.0"
 
       - name: Install release keystore
         env:
@@ -66,19 +66,23 @@ jobs:
           echo "$KEYSTORE_B64" | base64 -d > "${{ github.workspace }}/release.keystore"
           echo "ANDROID_KEYSTORE_FILE=${{ github.workspace }}/release.keystore" >> "$GITHUB_ENV"
 
-      - name: Read versionName
+      - name: Read versionName and versionCode
         id: version
         run: |
           VERSION_NAME=$(grep -m1 'versionName = "' app/build.gradle.kts | sed 's/.*versionName = "\([^"]*\)".*/\1/')
+          VERSION_CODE=$(grep -m1 'versionCode = ' app/build.gradle.kts | sed 's/.*versionCode = \([0-9]*\).*/\1/')
           echo "name=${VERSION_NAME}" >> "$GITHUB_OUTPUT"
-          echo "versionName=${VERSION_NAME}"
+          echo "code=${VERSION_CODE}" >> "$GITHUB_OUTPUT"
+          echo "versionName=${VERSION_NAME} versionCode=${VERSION_CODE}"
 
-      - name: Build signed release APK
+      - name: Build signed release APK and AAB
         env:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-        run: ./gradlew :app:assembleRelease --no-daemon
+        run: |
+          export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)"
+          ./gradlew :app:assembleRelease :app:bundleRelease --no-daemon
 
       - name: Prepare release asset
         run: |
@@ -88,16 +92,35 @@ jobs:
           echo "APK_NAME=${APK_NAME}" >> "$GITHUB_ENV"
           ls -la "${APK_NAME}"
 
+      - name: Upload release AAB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: c-week-release-aab-${{ steps.version.outputs.name }}
+          path: app/build/outputs/bundle/release/app-release.aab
+          if-no-files-found: error
+
       - name: Write release notes
         run: |
+          VERSION_CODE="${{ steps.version.outputs.code }}"
+          CHANGELOG="fastlane/metadata/android/en-US/changelogs/${VERSION_CODE}.txt"
+          if [ ! -f "$CHANGELOG" ]; then
+            echo "::error::Missing changelog for versionCode ${VERSION_CODE}: ${CHANGELOG}"
+            exit 1
+          fi
+          HIGHLIGHTS=$(sed '/^[[:space:]]*$/d' "$CHANGELOG" | head -n 20)
+          if [ -z "$HIGHLIGHTS" ]; then
+            echo "::error::Changelog ${CHANGELOG} is empty — release Highlights would be blank."
+            exit 1
+          fi
           {
             echo "## 更新 Highlights"
             echo
-            sed -n '/^## 功能 Features$/,/^---$/p' README.md | sed '1d;$d'
+            echo "$HIGHLIGHTS"
             echo
             echo "---"
             echo
             echo "Release 包为 \`assembleRelease\` 正式签名版，applicationId \`com.py2c.week\`，由 CI 使用仓库 Secrets 中的发布 keystore 签名。"
+            echo "Google Play 用的 AAB 见本 workflow 的 Artifacts（不附在 GitHub Release 上）。"
           } > release_body.md
 
       - name: Publish GitHub Release

@@ -7,18 +7,33 @@ plugins {
     alias(libs.plugins.roborazzi)
 }
 
+fun reproducibleBuildTimeUtc(): String {
+    System.getenv("SOURCE_DATE_EPOCH")?.toLongOrNull()?.let { epoch ->
+        return Instant.ofEpochSecond(epoch).toString()
+    }
+    return runCatching {
+        ProcessBuilder("git", "log", "-1", "--format=%cI")
+            .directory(rootProject.projectDir)
+            .start()
+            .inputStream
+            .bufferedReader()
+            .readText()
+            .trim()
+    }.getOrNull()?.takeIf { it.isNotEmpty() } ?: "2026-10-13T00:00:00Z"
+}
+
 android {
     namespace = "com.py2c.week"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.py2c.week"
         minSdk = 26
-        targetSdk = 35
-        versionCode = 8
-        versionName = "1.5.1"
+        targetSdk = 36
+        versionCode = 9
+        versionName = "1.5.2"
         vectorDrawables.useSupportLibrary = true
-        buildConfigField("String", "BUILD_TIME_UTC", "\"${Instant.now()}\"")
+        buildConfigField("String", "BUILD_TIME_UTC", "\"${reproducibleBuildTimeUtc()}\"")
     }
 
     signingConfigs {
@@ -83,6 +98,11 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
     }
 }
 

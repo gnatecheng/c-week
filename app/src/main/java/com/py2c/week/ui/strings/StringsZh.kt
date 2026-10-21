@@ -41,6 +41,15 @@ object StringsZh : AppStrings {
     override val aboutOpenRepo = "在浏览器中打开 GitHub"
     override val aboutDescription = "C一周通：7 天 C 语言入门，含微课、离线实验模拟与测验。"
 
+    override val settingsPrivacyPolicy = "隐私政策"
+    override val privacyPolicyTitle = "隐私政策"
+    override val privacyPolicyOpenWeb = "在浏览器中打开完整网页版"
+    override val privacyNoticeTitle = "隐私说明"
+    override val privacyNoticeBody =
+        "本应用不收集个人信息，数据只保存在你的手机。只有你主动备份、导出或分享时，相关文件才会离开本机。"
+    override val privacyNoticeGotIt = "我知道了"
+    override val privacyNoticeReadFull = "查看全文"
+
     override fun homeProgressPercent(percent: Int) = "一周进度  $percent%"
     override val homeProgressBlurb =
         "课文用生活场景打比方（门牌号、食谱、储物柜），再落到精确的 C。每天微课 + 实验 + 测验。真正的 gcc 在电脑 VS Code 里跑，手机上是讲解与模拟评测。"

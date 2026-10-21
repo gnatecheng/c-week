@@ -236,11 +236,13 @@ function renderDownloadPanel(app, dict) {
               </a>`;
 }
 
-function renderFooter(app, dict) {
+function renderFooter(app, dict, isEn) {
+  const privacyHref = isEn ? "/en/privacy/" : "/privacy/";
   return `    <footer class="site-footer app-page-footer">
       <div class="wrap inner">
         <p class="footer-copy">${t(dict, app.footerCopyrightKey)}</p>
         <div class="footer-actions">
+          <a class="footer-repo-link" href="${privacyHref}">${t(dict, "footer.privacy")}</a>
           <a class="footer-repo-link" href="https://github.com/${app.github}" rel="noopener noreferrer"
             ><svg class="icon-github" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"
               ><path d="${GITHUB_ICON_PATH}" /></svg
@@ -350,7 +352,7 @@ ${renderFaqList(app, dict, t)}
         </div>
       </section>
     </main>
-${renderFooter(app, dict)}
+${renderFooter(app, dict, isEn)}
     <script src="/js/translations.js?v=${TRANSLATIONS_V}" defer></script>
     <script src="/js/site.js?v=${SITE_JS_V}" defer></script>
     <script src="/js/app-section-nav.js?v=${SECTION_NAV_JS_V}" defer></script>

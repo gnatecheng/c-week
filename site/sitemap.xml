@@ -65,6 +65,24 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://etais.dev/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://etais.dev/privacy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://etais.dev/en/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://etais.dev/privacy/" />
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://etais.dev/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://etais.dev/privacy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://etais.dev/en/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://etais.dev/privacy/" />
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://etais.dev/en/c-week/</loc>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://etais.dev/c-week/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://etais.dev/en/c-week/" />

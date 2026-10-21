@@ -50,6 +50,7 @@ fun SettingsScreen(
     preferences: UserPreferences,
     store: UserPreferencesStore,
     onBack: () -> Unit,
+    onOpenPrivacyPolicy: () -> Unit,
 ) {
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
@@ -90,6 +91,16 @@ fun SettingsScreen(
                 label = { themePreferenceLabel(strings, it) },
                 onSelect = { scope.launch { store.setTheme(it) } },
             )
+
+            Text(strings.settingsPrivacyPolicy, style = MaterialTheme.typography.titleMedium)
+            OutlinedButton(
+                onClick = onOpenPrivacyPolicy,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(48.dp),
+            ) {
+                Text(strings.privacyPolicyTitle)
+            }
 
             Text(strings.settingsAbout, style = MaterialTheme.typography.titleMedium)
             Card(modifier = Modifier.fillMaxWidth()) {

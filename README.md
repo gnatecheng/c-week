@@ -74,12 +74,13 @@ Apps featured on the homepage:
 - **English UI + full English curriculum** (1.5.0): Settings → Chinese / English; Days 1–7 lessons, quiz hints, lab grading, VS Code demo copy in English.
 - **Settings & About** (1.5.0): language, light / dark / system theme, version, build time, open-source repo link.
 - **English plural strings** (1.5.1): streaks, quiz counts, lab hints, and other quantity labels use correct singular/plural forms (e.g. “Streak 1 day” instead of “Streak 1 days”).
+- **Google Play / Coolapk readiness** (1.5.2): targetSdk 36, CI-signed AAB artifact, in-app privacy policy and one-time first-launch notice, Fastlane metadata, reproducible build timestamps.
 - **Lessons:** Chinese narration (with analogies), quizzes, **real VS Code recordings**. Day 1 includes paths/files and **step-by-step bash** (pwd/ls/cd/… plus cheat sheet).
 - **Code labs:** edit C in-app; **simulated run** against cases; categorized hints (missing headers, off-by-one, pointers, formulas, empty TODO shells, BFS vs Dijkstra confusion, etc.).
 - **Day 7 capstone:** adjacency list + O(V²) Dijkstra fill-in; multiple tests; optional grid walkthrough for dist and shortest path.
 - **Glossary:** pointer, stack/heap, array decay, launch.json, bash paths, etc.
 - System light/dark (overridable in Settings); large tap targets; monospace code font.
-- Current debug build: **1.5.1** (versionCode 8).
+- Current debug build: **1.5.2** (versionCode 9).
 
 ---
 
@@ -103,7 +104,7 @@ Full lesson text: `app/src/main/java/com/py2c/week/data/curriculum/`. Map JSON: 
 
 1. Install [Android Studio](https://developer.android.com/studio) (Koala / Ladybug or newer, AGP 8.7).
 2. **File → Open** this repository root (folder containing `settings.gradle.kts`).
-3. Wait for Gradle sync. SDK: **compileSdk/targetSdk 35**, **minSdk 26**.
+3. Wait for Gradle sync. SDK: **compileSdk/targetSdk 36**, **minSdk 26**.
 4. Select a device or emulator (API 26+).
 5. Click **Run** (green triangle) on the `app` configuration.
 

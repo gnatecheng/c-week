@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Etai Apps Privacy Policy</title>
+    <meta name="description" content="Shared privacy policy for C Week, Easy Ledger, and Group Matters: offline, no accounts, on-device data; permissions match each app’s install manifest." />
+    <link rel="alternate" hreflang="zh-CN" href="https://etais.dev/privacy/" />
+    <link rel="alternate" hreflang="en" href="https://etais.dev/en/privacy/" />
+    <link rel="alternate" hreflang="x-default" href="https://etais.dev/privacy/" />
+    <link rel="canonical" href="https://etais.dev/en/privacy/" />
+    <link rel="icon" href="/favicon.ico?v=1" sizes="any" />
+    <link rel="icon" href="/assets/icon.svg?v=2" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest.en.json?v=2" />
+    <meta name="theme-color" content="#0f766e" />
+    <script src="/js/init-theme.js?v=4"></script>
+    <link rel="stylesheet" href="/css/style.css?v=31" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Etai Apps" />
+    <meta property="og:url" content="https://etais.dev/en/privacy/" />
+    <meta property="og:title" content="Etai Apps Privacy Policy" />
+    <meta property="og:description" content="Shared privacy policy for C Week, Easy Ledger, and Group Matters: offline, no accounts, on-device data; permissions match each app’s install manifest." />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta property="og:image" content="https://etais.dev/assets/og-image.png?v=6" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Etai Apps Privacy Policy" />
+    <meta name="twitter:description" content="Shared privacy policy for C Week, Easy Ledger, and Group Matters: offline, no accounts, on-device data; permissions match each app’s install manifest." />
+  </head>
+  <body data-page-lang="en" class="app-subpage privacy-page">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header app-page-header">
+      <div class="wrap header-shell app-page-header-shell">
+        <a class="brand" href="/en/">Etai Apps</a>
+        <div class="header-tools">
+          <div class="site-prefs" id="lang-switch" role="group" aria-label="Language">
+            <button type="button" id="lang-zh" aria-pressed="false">中文</button>
+            <button type="button" id="lang-en" aria-pressed="true">English</button>
+          </div>
+          <button type="button" id="theme-toggle" aria-label="Theme">
+            <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="icon-system" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <section class="app-page-block privacy-document" aria-labelledby="privacy-doc-title">
+        <div class="wrap">
+          <h1 id="privacy-doc-title" class="project-subhead">Etai Apps Privacy Policy</h1>
+          <div class="privacy-prose project-prose">
+
+<p class="privacy-lead"><strong>In one sentence:</strong> These apps are <strong>offline, account-free, and server-free</strong>. By default we do not collect or upload personal information. Data stays on your device; files leave the phone only when you export, share, or back them up yourself.</p>
+<p><strong>Effective date:</strong> 2026-10-13 · <strong>Publisher:</strong> Ch Etang (Etai Apps)</p>
+<h3>Who we are</h3>
+<p>Etai Apps is a personal developer’s set of open-source Android apps. Website: <a href="https://etais.dev/en/">https://etais.dev/</a>. Source code is on GitHub (c-week, easy-ledger, group-matters).</p>
+<h3>What data we process</h3>
+<h4>1. In-app data (on-device only)</h4>
+<ul>
+  <li><strong>C Week:</strong> Learning progress, mistake book, language and theme preferences</li>
+  <li><strong>Easy Ledger:</strong> Ledger entries, categories, notes, receipt images (if you add them), UI preferences</li>
+  <li><strong>Group Matters:</strong> Groups and members, activity progress, group-fund ledger, payment proof images (if you add them), UI preferences</li>
+</ul>
+<p>This data is stored in the app’s local storage and is <strong>not</strong> synced to a cloud service we operate.</p>
+<h4>2. Content you export or share</h4>
+<p>When you use backup, export, copy, or share features, the app may create zip, CSV, text, or image files. Those files appear only where you choose to save or send them. We do not upload them for you.</p>
+<h4>3. What we do not collect</h4>
+<ul>
+  <li>No sign-up or sign-in</li>
+  <li>No identity data such as name, phone number, email, or ID numbers for our services</li>
+  <li>No ad SDKs, analytics SDKs, or crash-reporting SDKs (as reflected in each release’s manifest and dependencies)</li>
+  <li>Each app’s <strong>main manifest does not declare INTERNET</strong>. The merged install manifest may include permissions such as <code>ACCESS_NETWORK_STATE</code> from libraries (see Permissions below). Normal use does not require a network; we have no backend that receives your app data</li>
+</ul>
+<h3>Permissions</h3>
+<p>Each app requests only permissions needed for its features. The following reflects each app’s <strong>main manifest and typical merged results</strong>; <strong>see your device’s install prompt for the exact list</strong>:</p>
+<ul>
+  <li><strong>C Week:</strong> No INTERNET in the main manifest. The merged manifest may include <code>ACCESS_NETWORK_STATE</code> from Media3 libraries (network-state detection only; we do not upload learning data). Lessons and demo videos ship inside the APK.</li>
+  <li><strong>Easy Ledger:</strong> No INTERNET in the main manifest. The merged manifest may include camera, media/storage read, notifications, and home-screen widget capabilities for receipts, backup I/O, and widgets you enable.</li>
+  <li><strong>Group Matters:</strong> No INTERNET in the main manifest. The merged manifest may include camera, media/storage read, notifications, and home-screen widget capabilities for proof images, backup I/O, and widgets you enable.</li>
+</ul>
+<p>We do not request unrelated sensitive permissions. See each repository’s manifest and your device’s install screen for details.</p>
+<h3>Children</h3>
+<p>We do not direct these apps at children or collect children’s data for our services. Because data stays on-device with no accounts, a parent or guardian can manage or uninstall the app on the device.</p>
+<h3>Security and device changes</h3>
+<ul>
+  <li>On-device security depends mainly on your lock screen and system settings</li>
+  <li>Uninstalling usually deletes app data; back up before reinstalling or switching phones</li>
+  <li>Release-signed builds may not overwrite older debug or differently signed builds; uninstalling to fix a signature conflict deletes local data unless you backed up first</li>
+</ul>
+<h3>Third parties and open source</h3>
+<p>Download stores (GitHub Releases, Coolapk, Google Play, etc.) have their own policies separate from how data is handled inside the apps. Open-source libraries are used under their licenses; we do not use them to add tracking services.</p>
+<p>The etais.dev website uses Cloudflare Web Analytics (separate from data handling inside the Android apps).</p>
+<h3>Changes</h3>
+<p>If this policy changes in a material way, we will update the effective date on this page and note it in release notes or on the website where practical.</p>
+<h3>Contact</h3>
+<p>For privacy questions, contact the publisher via <a href="https://etais.dev/en/">https://etais.dev/</a> or Discussions / Issues on the relevant GitHub repository.</p>
+
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap inner">
+        <p>© Etai Apps · Easy Ledger / Group Matters / C Week · Open-source Android apps</p>
+        <p class="footer-links">
+          <a href="/en/privacy/">Privacy policy</a>
+          <a href="https://github.com/gnatecheng/c-week" rel="noopener noreferrer"
+            ><svg class="icon-github" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"
+              ><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3 .405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" /></svg
+            ><span>c-week</span></a
+          >
+          <a href="https://github.com/gnatecheng/easy-ledger" rel="noopener noreferrer"
+            ><svg class="icon-github" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"
+              ><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3 .405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" /></svg
+            ><span>easy-ledger</span></a
+          >
+          <a href="https://github.com/gnatecheng/group-matters" rel="noopener noreferrer"
+            ><svg class="icon-github" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"
+              ><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3 .405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" /></svg
+            ><span>group-matters</span></a
+          >
+        </p>
+        <p class="footer-hub-link"><a href="/en/">Back to Etai Apps homepage</a></p>
+      </div>
+    </footer>
+    <script src="/js/translations.js?v=37" defer></script>
+    <script src="/js/site.js?v=11" defer></script>
+    <script src="/js/github-meta.js?v=6" defer></script>
+  </body>
+</html>

@@ -8,4 +8,5 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 execSync("node scripts/build-app-pages.mjs", { cwd: root, stdio: "inherit" });
+execSync("node scripts/build-privacy-pages.mjs", { cwd: root, stdio: "inherit" });
 execSync("node scripts/build-en-index.mjs", { cwd: root, stdio: "inherit" });

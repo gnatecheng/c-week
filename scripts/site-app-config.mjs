@@ -47,8 +47,8 @@ export const APP_PAGES = [
         itemKeys: ["app.easyLedger.changelog.132.1", "app.easyLedger.changelog.132.2"],
       },
       {
-        version: "1.3.1",
-        url: "https://github.com/gnatecheng/easy-ledger/releases/tag/v1.3.1",
+        version: "1.3.2",
+        url: "https://github.com/gnatecheng/easy-ledger/releases/tag/v1.3.2",
         itemKeys: ["app.easyLedger.changelog.131.1", "app.easyLedger.changelog.131.2"],
       },
       {
@@ -196,7 +196,7 @@ export const APP_PAGES = [
     slideCount: 6,
     galleryPrefix: "cweek.hero.gallery",
     category: "EducationalApplication",
-    versionFallback: "1.5.1",
+    versionFallback: "1.5.2",
     footKey: null,
     showRoadmap: true,
     privacyBodyKey: "app.cWeek.privacy.body",
@@ -219,6 +219,11 @@ export const APP_PAGES = [
       [null, "cweek.features.glossary.title", "cweek.features.glossary.body"],
     ],
     changelog: [
+      {
+        version: "1.5.2",
+        url: "https://github.com/gnatecheng/c-week/releases/tag/v1.5.2",
+        itemKeys: ["app.cWeek.changelog.152.1", "app.cWeek.changelog.152.2"],
+      },
       {
         version: "1.5.1",
         url: "https://github.com/gnatecheng/c-week/releases/tag/v1.5.1",

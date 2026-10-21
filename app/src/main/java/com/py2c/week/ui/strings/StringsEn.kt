@@ -43,6 +43,15 @@ class StringsEn(private val resources: Resources) : AppStrings {
     override val aboutOpenRepo = "Open on GitHub"
     override val aboutDescription = "C Week: a 7-day C intro with lessons, offline lab simulation, and quizzes."
 
+    override val settingsPrivacyPolicy = "Privacy policy"
+    override val privacyPolicyTitle = "Privacy policy"
+    override val privacyPolicyOpenWeb = "Open full policy on the web"
+    override val privacyNoticeTitle = "Privacy notice"
+    override val privacyNoticeBody =
+        "This app does not collect personal information. Your data stays on this phone. Files leave the device only if you back up, export, or share them."
+    override val privacyNoticeGotIt = "Got it"
+    override val privacyNoticeReadFull = "Read full policy"
+
     override fun homeProgressPercent(percent: Int) = "Week progress  $percent%"
     override val homeProgressBlurb =
         "Lessons use everyday analogies, then precise C. Each day: micro-lessons, lab, and quiz. Run real gcc in VS Code on your computer; the phone app teaches and simulates grading."

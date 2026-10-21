@@ -46,6 +46,14 @@ interface AppStrings {
     val aboutOpenRepo: String
     val aboutDescription: String
 
+    val settingsPrivacyPolicy: String
+    val privacyPolicyTitle: String
+    val privacyPolicyOpenWeb: String
+    val privacyNoticeTitle: String
+    val privacyNoticeBody: String
+    val privacyNoticeGotIt: String
+    val privacyNoticeReadFull: String
+
     fun homeProgressPercent(percent: Int): String
     val homeProgressBlurb: String
     val homeWrongBookTitle: String
