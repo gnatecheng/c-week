@@ -26,8 +26,8 @@ export const privacyBodyZh = `
 <p>各应用只申请实现功能所必需的权限。以下根据各应用<strong>主清单与常见合并结果</strong>整理；<strong>以你安装时系统展示的列表为准</strong>：</p>
 <ul>
   <li><strong>C一周通：</strong>主清单无 INTERNET。合并清单可能包含 Media3 依赖带入的 <code>ACCESS_NETWORK_STATE</code>（检测网络状态，不上传学习数据）。课文与演示视频均打包在 APK 内。</li>
-  <li><strong>轻记账：</strong>主清单无 INTERNET。合并清单可能包含相机、读取媒体/存储、通知、桌面小组件相关权限，用于收据照片、备份读写与小组件等你启用的功能。</li>
-  <li><strong>团团记：</strong>主清单无 INTERNET。合并清单可能包含相机、读取媒体/存储、通知、桌面小组件相关权限，用于凭证照片、备份读写与小组件等你启用的功能。</li>
+  <li><strong>轻记账：</strong>主清单<strong>未声明 INTERNET 与 CAMERA 权限</strong>。仅声明可选硬件特性 <code>android.hardware.camera</code>（<code>required=false</code>）。添加收据照片时由你主动打开<strong>系统相机或图片选择器</strong>，不会在后台扫描相册。合并后的安装清单可能包含通知、读取媒体/存储、桌面小组件等（备份、分享与小组件），以安装界面为准。</li>
+  <li><strong>团团记：</strong>主清单<strong>未声明任何 uses-permission</strong>（无 INTERNET、无相机权限等）。小组件、备份与分享通过系统标准机制与 FileProvider 完成。合并后的安装清单以你设备上的安装界面为准。</li>
 </ul>
 <p>我们不会申请与功能无关的敏感权限。具体列表以安装时系统展示及各仓库源码中的清单为准。</p>
 <h3>儿童与未成年人</h3>
@@ -73,8 +73,8 @@ export const privacyBodyEn = `
 <p>Each app requests only permissions needed for its features. The following reflects each app’s <strong>main manifest and typical merged results</strong>; <strong>see your device’s install prompt for the exact list</strong>:</p>
 <ul>
   <li><strong>C Week:</strong> No INTERNET in the main manifest. The merged manifest may include <code>ACCESS_NETWORK_STATE</code> from Media3 libraries (network-state detection only; we do not upload learning data). Lessons and demo videos ship inside the APK.</li>
-  <li><strong>Easy Ledger:</strong> No INTERNET in the main manifest. The merged manifest may include camera, media/storage read, notifications, and home-screen widget capabilities for receipts, backup I/O, and widgets you enable.</li>
-  <li><strong>Group Matters:</strong> No INTERNET in the main manifest. The merged manifest may include camera, media/storage read, notifications, and home-screen widget capabilities for proof images, backup I/O, and widgets you enable.</li>
+  <li><strong>Easy Ledger:</strong> The main manifest declares <strong>no INTERNET and no CAMERA permission</strong>. It only declares optional hardware <code>android.hardware.camera</code> (<code>required=false</code>). Receipt photos use the <strong>system camera or photo picker</strong> when you choose; we do not scan your gallery in the background. The merged install manifest may include notifications, media/storage read, or home-screen widget capabilities for backup, sharing, and widgets—see your device’s install prompt.</li>
+  <li><strong>Group Matters:</strong> The main manifest declares <strong>no uses-permission entries</strong> (no INTERNET, no camera permission, etc.). Widgets, backup, and sharing use standard OS mechanisms and FileProvider. See the merged install prompt on your device for the exact list.</li>
 </ul>
 <p>We do not request unrelated sensitive permissions. See each repository’s manifest and your device’s install screen for details.</p>
 <h3>Children</h3>
