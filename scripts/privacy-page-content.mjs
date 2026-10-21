@@ -20,16 +20,15 @@ export const privacyBodyZh = `
   <li>不要求注册或登录</li>
   <li>不收集姓名、手机号、邮箱、身份证等身份信息</li>
   <li>不接入广告 SDK、统计分析 SDK、崩溃上报 SDK（以各版本 AndroidManifest 与依赖为准）</li>
-  <li>各应用<strong>主清单均未声明 INTERNET 权限</strong>；合并后的安装清单可能包含依赖库带入的 ACCESS_NETWORK_STATE 等（见下方权限说明）。日常使用不需要联网，我们也没有自建后端接收你的业务数据</li>
+  <li>三个应用<strong>都不会</strong>把账本、学习进度等数据上传到我们的服务器；日常使用<strong>不需要联网</strong>。</li>
 </ul>
-<h3>权限说明</h3>
-<p>各应用只申请实现功能所必需的权限。以下根据各应用<strong>主清单与常见合并结果</strong>整理；<strong>以你安装时系统展示的列表为准</strong>：</p>
+<h3>安装时系统显示的权限（正式版合并清单）</h3>
+<p>下列说明依据各应用当前 Play / 酷安就绪分支的<strong>正式版合并安装清单</strong>（你在安装界面看到的列表）。除特别说明外，不含联网、相机、读取相册等权限。</p>
 <ul>
-  <li><strong>C一周通：</strong>主清单无 INTERNET。合并清单可能包含 Media3 依赖带入的 <code>ACCESS_NETWORK_STATE</code>（检测网络状态，不上传学习数据）。课文与演示视频均打包在 APK 内。</li>
-  <li><strong>轻记账：</strong>主清单<strong>未声明 INTERNET 与 CAMERA 权限</strong>。仅声明可选硬件特性 <code>android.hardware.camera</code>（<code>required=false</code>）。添加收据照片时由你主动打开<strong>系统相机或图片选择器</strong>，不会在后台扫描相册。合并后的安装清单可能包含通知、读取媒体/存储、桌面小组件等（备份、分享与小组件），以安装界面为准。</li>
-  <li><strong>团团记：</strong>主清单<strong>未声明任何 uses-permission</strong>（无 INTERNET、无相机权限等）。小组件、备份与分享通过系统标准机制与 FileProvider 完成。合并后的安装清单以你设备上的安装界面为准。</li>
+  <li><strong>轻记账：</strong>安装列表<strong>只有</strong>一项与 App 签名绑定的系统内部权限（Android 用来注册应用内组件，对用户不可见、不可拒绝）。<strong>没有</strong>联网、相机或存储类权限。收据照片由你在<strong>系统拍照或选图界面</strong>里主动添加。</li>
+  <li><strong>团团记：</strong>与轻记账相同——<strong>只有</strong>那一项签名相关的内部权限，没有联网、相机等。</li>
+  <li><strong>C一周通：</strong>除上述内部权限外，还有「<strong>查看网络连接状态</strong>」。它来自内置<strong>视频播放库</strong>，用来判断设备是否联网；<strong>应用本身不会因此上网</strong>，也不会上传你的学习数据。课文与演示视频都在安装包内。</li>
 </ul>
-<p>我们不会申请与功能无关的敏感权限。具体列表以安装时系统展示及各仓库源码中的清单为准。</p>
 <h3>儿童与未成年人</h3>
 <p>本应用不面向儿童定向收集信息。因数据默认仅存本机且无账号体系，监护人可直接在设备上管理或卸载应用。</p>
 <h3>数据安全与换机</h3>
@@ -67,16 +66,15 @@ export const privacyBodyEn = `
   <li>No sign-up or sign-in</li>
   <li>No identity data such as name, phone number, email, or ID numbers for our services</li>
   <li>No ad SDKs, analytics SDKs, or crash-reporting SDKs (as reflected in each release’s manifest and dependencies)</li>
-  <li>Each app’s <strong>main manifest does not declare INTERNET</strong>. The merged install manifest may include permissions such as <code>ACCESS_NETWORK_STATE</code> from libraries (see Permissions below). Normal use does not require a network; we have no backend that receives your app data</li>
+  <li>None of the apps upload your ledger or learning data to our servers; normal use does <strong>not</strong> require a network.</li>
 </ul>
-<h3>Permissions</h3>
-<p>Each app requests only permissions needed for its features. The following reflects each app’s <strong>main manifest and typical merged results</strong>; <strong>see your device’s install prompt for the exact list</strong>:</p>
+<h3>Permissions shown at install (release merged manifest)</h3>
+<p>Based on each app’s current release merged manifest (what the system shows when you install). Unless noted, there is no Internet, camera, or storage access permission.</p>
 <ul>
-  <li><strong>C Week:</strong> No INTERNET in the main manifest. The merged manifest may include <code>ACCESS_NETWORK_STATE</code> from Media3 libraries (network-state detection only; we do not upload learning data). Lessons and demo videos ship inside the APK.</li>
-  <li><strong>Easy Ledger:</strong> The main manifest declares <strong>no INTERNET and no CAMERA permission</strong>. It only declares optional hardware <code>android.hardware.camera</code> (<code>required=false</code>). Receipt photos use the <strong>system camera or photo picker</strong> when you choose; we do not scan your gallery in the background. The merged install manifest may include notifications, media/storage read, or home-screen widget capabilities for backup, sharing, and widgets—see your device’s install prompt.</li>
-  <li><strong>Group Matters:</strong> The main manifest declares <strong>no uses-permission entries</strong> (no INTERNET, no camera permission, etc.). Widgets, backup, and sharing use standard OS mechanisms and FileProvider. See the merged install prompt on your device for the exact list.</li>
+  <li><strong>Easy Ledger:</strong> The install list shows <strong>only</strong> one signature-bound internal permission (Android uses it to register in-app components; not something you grant separately). <strong>No</strong> Internet, camera, or storage permissions. Receipt photos are added only when you use the <strong>system camera or photo picker</strong>.</li>
+  <li><strong>Group Matters:</strong> Same as Easy Ledger—<strong>only</strong> that internal signature permission, no Internet or camera.</li>
+  <li><strong>C Week:</strong> That internal permission plus <strong>“view network connections”</strong> from the built-in <strong>video player library</strong>, so the player can tell whether the device is online. The app <strong>does not go online</strong> or upload your learning data. Lessons and videos ship inside the install package.</li>
 </ul>
-<p>We do not request unrelated sensitive permissions. See each repository’s manifest and your device’s install screen for details.</p>
 <h3>Children</h3>
 <p>We do not direct these apps at children or collect children’s data for our services. Because data stays on-device with no accounts, a parent or guardian can manage or uninstall the app on the device.</p>
 <h3>Security and device changes</h3>

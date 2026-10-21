@@ -17,24 +17,31 @@ import com.py2c.week.data.AppLocale
 import com.py2c.week.data.CheckInClock
 import com.py2c.week.data.ProgressSnapshot
 import com.py2c.week.data.UserPreferences
+import com.py2c.week.ui.home.HomeScreen
 import com.py2c.week.ui.navigation.LocalContainer
 import com.py2c.week.ui.settings.SettingsScreen
 import com.py2c.week.ui.strings.LocalAppLocale
 import com.py2c.week.ui.strings.LocalStrings
 import com.py2c.week.ui.strings.stringsFor
 import com.py2c.week.ui.theme.Py2CTheme
+import java.io.File
+import java.security.MessageDigest
 import org.junit.After
+import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import java.time.LocalDate
+import org.junit.FixMethodOrder
+import org.junit.runners.MethodSorters
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
+import java.time.LocalDate
 
 @RunWith(RobolectricTestRunner::class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [33], application = Py2CApplication::class, qualifiers = "w360dp-h720dp-480dpi")
 class PrivacyUiRoborazziTest {
@@ -44,6 +51,9 @@ class PrivacyUiRoborazziTest {
     private val phoneQualifiers = "w360dp-h720dp-480dpi"
     private val fixedToday = LocalDate.of(2026, 9, 28)
 
+    private val noticeZhPath = "/opt/cursor/artifacts/cweek-privacy-notice-zh-light.png"
+    private val noticeEnPath = "/opt/cursor/artifacts/cweek-privacy-notice-en-dark.png"
+
     @Before
     fun fixClock() {
         CheckInClock.fixedToday = fixedToday
@@ -52,10 +62,6 @@ class PrivacyUiRoborazziTest {
     @After
     fun resetClock() {
         CheckInClock.clearFixedToday()
-    }
-
-    @After
-    fun resetQualifiers() {
         RuntimeEnvironment.setQualifiers(phoneQualifiers)
     }
 
@@ -70,19 +76,34 @@ class PrivacyUiRoborazziTest {
 
     @Test
     fun privacyNoticeEnDark() {
-        captureNotice(
+        captureNoticeOverHome(
             locale = AppLocale.EN,
             darkTheme = true,
-            output = "/opt/cursor/artifacts/cweek-privacy-notice-en-dark.png",
+            roboQualifiers = "en-rUS-w360dp-h720dp-480dpi",
+            extraNight = true,
+            output = noticeEnPath,
         )
     }
 
     @Test
     fun privacyNoticeZhLight() {
-        captureNotice(
+        captureNoticeOverHome(
             locale = AppLocale.ZH,
             darkTheme = false,
-            output = "/opt/cursor/artifacts/cweek-privacy-notice-zh-light.png",
+            roboQualifiers = "zh-rCN-w360dp-h720dp-480dpi",
+            extraNight = false,
+            output = noticeZhPath,
+        )
+    }
+
+    @Test
+    fun zz_privacyNoticeZhAndEnPngMd5Differ() {
+        val zhMd5 = MessageDigest.getInstance("MD5").digest(File(noticeZhPath).readBytes())
+        val enMd5 = MessageDigest.getInstance("MD5").digest(File(noticeEnPath).readBytes())
+        assertNotEquals(
+            "Notice PNG MD5 must differ (locale/theme/home under scrim)",
+            zhMd5.contentToString(),
+            enMd5.contentToString(),
         )
     }
 
@@ -97,7 +118,6 @@ class PrivacyUiRoborazziTest {
 
     @Test
     fun fastlaneHomeZhLight() {
-        // Re-use home capture dimensions for Play Store screenshots (1080×2160 px).
         val context = ApplicationProvider.getApplicationContext<android.content.Context>()
         val container = AppContainer(context)
         val curriculum = container.curriculumFor(AppLocale.ZH)
@@ -111,12 +131,9 @@ class PrivacyUiRoborazziTest {
                         LocalAppLocale provides AppLocale.ZH,
                         LocalContainer provides container,
                     ) {
-                        com.py2c.week.ui.home.HomeScreen(
+                        HomeScreen(
                             curriculum = curriculum,
-                            progress = ProgressSnapshot(
-                                checkinDates = setOf(fixedToday.toString()),
-                                checkedCourseDays = setOf(1),
-                            ),
+                            progress = demoProgress(),
                             onOpenDay = {},
                             onOpenWrongBook = {},
                             onOpenReport = {},
@@ -148,12 +165,9 @@ class PrivacyUiRoborazziTest {
                         LocalAppLocale provides AppLocale.EN,
                         LocalContainer provides container,
                     ) {
-                        com.py2c.week.ui.home.HomeScreen(
+                        HomeScreen(
                             curriculum = curriculum,
-                            progress = ProgressSnapshot(
-                                checkinDates = setOf(fixedToday.toString()),
-                                checkedCourseDays = setOf(1),
-                            ),
+                            progress = demoProgress(),
                             onOpenDay = {},
                             onOpenWrongBook = {},
                             onOpenReport = {},
@@ -169,6 +183,11 @@ class PrivacyUiRoborazziTest {
             "/workspace/fastlane/metadata/android/en-US/images/phoneScreenshots/01_home.png",
         )
     }
+
+    private fun demoProgress() = ProgressSnapshot(
+        checkinDates = setOf(fixedToday.toString()),
+        checkedCourseDays = setOf(1),
+    )
 
     private fun captureSettings(locale: AppLocale, darkTheme: Boolean, output: String) {
         val context = ApplicationProvider.getApplicationContext<android.content.Context>()
@@ -199,27 +218,51 @@ class PrivacyUiRoborazziTest {
         composeRule.onRoot().captureRoboImage(output)
     }
 
-    private fun captureNotice(locale: AppLocale, darkTheme: Boolean, output: String) {
+    private fun captureNoticeOverHome(
+        locale: AppLocale,
+        darkTheme: Boolean,
+        roboQualifiers: String,
+        output: String,
+        extraNight: Boolean = false,
+    ) {
         val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+        val container = AppContainer(context)
+        val curriculum = container.curriculumFor(locale)
         val strings = stringsFor(locale, context.resources)
-        RuntimeEnvironment.setQualifiers(phoneQualifiers)
-        if (darkTheme) RuntimeEnvironment.setQualifiers("+night")
-        captureRoboImage(output) {
+        RuntimeEnvironment.setQualifiers(roboQualifiers)
+        if (extraNight) {
+            RuntimeEnvironment.setQualifiers("+night")
+        }
+        composeRule.setContent {
             Py2CTheme(darkTheme = darkTheme) {
-                Box(Modifier.fillMaxSize()) {
+                Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     CompositionLocalProvider(
                         LocalStrings provides strings,
                         LocalAppLocale provides locale,
+                        LocalContainer provides container,
                     ) {
-                        PrivacyNoticeDialog(
-                            strings = strings,
-                            onDismiss = {},
-                            onReadFull = {},
-                        )
+                        Box(Modifier.fillMaxSize()) {
+                            HomeScreen(
+                                curriculum = curriculum,
+                                progress = demoProgress(),
+                                onOpenDay = {},
+                                onOpenWrongBook = {},
+                                onOpenReport = {},
+                                onOpenSettings = {},
+                                onReset = {},
+                            )
+                            PrivacyNoticeOverlay(
+                                strings = strings,
+                                onDismiss = {},
+                                onReadFull = {},
+                            )
+                        }
                     }
                 }
             }
         }
+        composeRule.waitForIdle()
+        composeRule.onRoot().captureRoboImage(output)
     }
 
     private fun capturePolicy(locale: AppLocale, darkTheme: Boolean, output: String) {

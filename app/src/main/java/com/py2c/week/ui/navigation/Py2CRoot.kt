@@ -1,5 +1,7 @@
 package com.py2c.week.ui.navigation
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.MenuBook
@@ -48,7 +50,7 @@ import com.py2c.week.ui.lesson.DemoScreen
 import com.py2c.week.ui.lesson.LessonScreen
 import com.py2c.week.ui.quiz.QuizScreen
 import com.py2c.week.ui.report.ReportScreen
-import com.py2c.week.ui.privacy.PrivacyNoticeDialog
+import com.py2c.week.ui.privacy.PrivacyNoticeOverlay
 import com.py2c.week.ui.privacy.PrivacyPolicyScreen
 import com.py2c.week.ui.settings.SettingsScreen
 import kotlinx.coroutines.launch
@@ -93,25 +95,7 @@ fun Py2CRoot(container: AppContainer, userPreferences: UserPreferences) {
             showPrivacyNotice = !userPreferences.privacyNoticeAcknowledged && route == "home"
         }
 
-        if (showPrivacyNotice) {
-            PrivacyNoticeDialog(
-                strings = strings,
-                onDismiss = {
-                    scope.launch {
-                        container.userPreferencesStore.acknowledgePrivacyNotice()
-                        showPrivacyNotice = false
-                    }
-                },
-                onReadFull = {
-                    scope.launch {
-                        container.userPreferencesStore.acknowledgePrivacyNotice()
-                        showPrivacyNotice = false
-                        nav.navigate("privacy")
-                    }
-                },
-            )
-        }
-
+        Box(Modifier.fillMaxSize()) {
         Scaffold(
             bottomBar = {
                 if (showBar) {
@@ -297,6 +281,25 @@ fun Py2CRoot(container: AppContainer, userPreferences: UserPreferences) {
                     TermScreen(term = term, onBack = { nav.popBackStack() })
                 }
             }
+        }
+        if (showPrivacyNotice) {
+            PrivacyNoticeOverlay(
+                strings = strings,
+                onDismiss = {
+                    scope.launch {
+                        container.userPreferencesStore.acknowledgePrivacyNotice()
+                        showPrivacyNotice = false
+                    }
+                },
+                onReadFull = {
+                    scope.launch {
+                        container.userPreferencesStore.acknowledgePrivacyNotice()
+                        showPrivacyNotice = false
+                        nav.navigate("privacy")
+                    }
+                },
+            )
+        }
         }
     }
 }

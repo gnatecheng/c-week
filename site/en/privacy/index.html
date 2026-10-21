@@ -70,16 +70,15 @@
   <li>No sign-up or sign-in</li>
   <li>No identity data such as name, phone number, email, or ID numbers for our services</li>
   <li>No ad SDKs, analytics SDKs, or crash-reporting SDKs (as reflected in each release’s manifest and dependencies)</li>
-  <li>Each app’s <strong>main manifest does not declare INTERNET</strong>. The merged install manifest may include permissions such as <code>ACCESS_NETWORK_STATE</code> from libraries (see Permissions below). Normal use does not require a network; we have no backend that receives your app data</li>
+  <li>None of the apps upload your ledger or learning data to our servers; normal use does <strong>not</strong> require a network.</li>
 </ul>
-<h3>Permissions</h3>
-<p>Each app requests only permissions needed for its features. The following reflects each app’s <strong>main manifest and typical merged results</strong>; <strong>see your device’s install prompt for the exact list</strong>:</p>
+<h3>Permissions shown at install (release merged manifest)</h3>
+<p>Based on each app’s current release merged manifest (what the system shows when you install). Unless noted, there is no Internet, camera, or storage access permission.</p>
 <ul>
-  <li><strong>C Week:</strong> No INTERNET in the main manifest. The merged manifest may include <code>ACCESS_NETWORK_STATE</code> from Media3 libraries (network-state detection only; we do not upload learning data). Lessons and demo videos ship inside the APK.</li>
-  <li><strong>Easy Ledger:</strong> No INTERNET in the main manifest. The merged manifest may include camera, media/storage read, notifications, and home-screen widget capabilities for receipts, backup I/O, and widgets you enable.</li>
-  <li><strong>Group Matters:</strong> No INTERNET in the main manifest. The merged manifest may include camera, media/storage read, notifications, and home-screen widget capabilities for proof images, backup I/O, and widgets you enable.</li>
+  <li><strong>Easy Ledger:</strong> The install list shows <strong>only</strong> one signature-bound internal permission (Android uses it to register in-app components; not something you grant separately). <strong>No</strong> Internet, camera, or storage permissions. Receipt photos are added only when you use the <strong>system camera or photo picker</strong>.</li>
+  <li><strong>Group Matters:</strong> Same as Easy Ledger—<strong>only</strong> that internal signature permission, no Internet or camera.</li>
+  <li><strong>C Week:</strong> That internal permission plus <strong>“view network connections”</strong> from the built-in <strong>video player library</strong>, so the player can tell whether the device is online. The app <strong>does not go online</strong> or upload your learning data. Lessons and videos ship inside the install package.</li>
 </ul>
-<p>We do not request unrelated sensitive permissions. See each repository’s manifest and your device’s install screen for details.</p>
 <h3>Children</h3>
 <p>We do not direct these apps at children or collect children’s data for our services. Because data stays on-device with no accounts, a parent or guardian can manage or uninstall the app on the device.</p>
 <h3>Security and device changes</h3>
