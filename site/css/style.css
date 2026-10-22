@@ -687,6 +687,23 @@ html.theme-dark .btn-primary {
   text-align: center;
 }
 
+.download-panel__mirror {
+  margin: 0.35rem 0 0;
+  font-size: 0.6875rem;
+  text-align: center;
+}
+
+.download-panel__mirror a {
+  color: var(--muted);
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.download-panel__mirror a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
 .download-panel__scan {
   display: none;
   flex: 0 0 auto;

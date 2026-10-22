@@ -125,14 +125,15 @@ window.ETAI_TRANSLATIONS = {
     "faq.lead": "安装、系统要求与离线使用 — 适用于本页三款应用。",
     "faq.install.title": "如何安装 APK？",
     "faq.install.body":
-      "在各自仓库的 GitHub Releases 下载最新 APK 并安装：<a href=\"https://github.com/gnatecheng/easy-ledger/releases/latest\" rel=\"noopener noreferrer\">轻记账</a>、<a href=\"https://github.com/gnatecheng/group-matters/releases/latest\" rel=\"noopener noreferrer\">团团记</a>、<a href=\"https://github.com/gnatecheng/c-week/releases/latest\" rel=\"noopener noreferrer\">C一周通</a>。Android 需允许「安装未知应用」（因渠道而异）。安装后桌面分别显示「轻记账」「团团记」「C一周通」。",
+      "在本页各应用下载区点击「下载最新 APK」、扫码，或直接打开：<a href=\"https://dl.etais.dev/easy-ledger-1.3.3.apk\" rel=\"noopener noreferrer\">轻记账</a>、<a href=\"https://dl.etais.dev/group-matters-1.5.3.apk\" rel=\"noopener noreferrer\">团团记</a>、<a href=\"https://dl.etais.dev/c-week-1.5.2.apk\" rel=\"noopener noreferrer\">C一周通</a>。若链接不可用，可使用下载区内的「备用下载（GitHub）」。Android 需允许「安装未知应用」（因渠道而异）。",
     "faq.installTips.title": "安装提示（Android 版本、未知来源、覆盖安装）",
     "faq.installTips.body":
-      "三款应用均需 <strong>Android 8.0 及以上</strong>。请从各应用 GitHub Releases 下载<strong>正式签名版</strong> APK 安装。首次安装时，系统可能提示「不允许安装未知应用」——请在设置里为浏览器或文件管理器开启「允许安装未知来源应用」（各品牌路径与 wording 不同）。若提示<strong>签名冲突</strong>，需先卸载旧版再装新版；<strong>卸载会删除应用内数据</strong>，请先备份（轻记账 / 团团记可用应用内备份，C一周通请按应用内说明导出进度如有）。<strong>轻记账与团团记</strong>若曾安装测试版或旧签名版本，请先卸载后再安装当前正式版。",
+      "三款应用均需 <strong>Android 8.0 及以上</strong>。请从本页下载按钮或 <strong>dl.etais.dev</strong> 直链安装<strong>正式签名版</strong> APK（下载区亦提供 GitHub 备用链接）。首次安装时，系统可能提示「不允许安装未知应用」——请在设置里为浏览器或文件管理器开启「允许安装未知来源应用」（各品牌路径与 wording 不同）。若提示<strong>签名冲突</strong>，需先卸载旧版再装新版；<strong>卸载会删除应用内数据</strong>，请先备份（轻记账 / 团团记可用应用内备份，C一周通请按应用内说明导出进度如有）。<strong>轻记账与团团记</strong>若曾安装测试版或旧签名版本，请先卸载后再安装当前正式版。",
     "download.androidMin": "Android 8.0+",
     "download.apkLabel": "APK",
     "download.scanOr": "或",
-    "download.releasesNote": "GitHub Releases · 免费开源",
+    "download.releasesNote": "dl.etais.dev · 免费开源",
+    "download.githubMirror": "备用下载（GitHub）",
     "download.qrCaption": "扫码下载",
     "download.qrAlt.easyLedger": "轻记账下载二维码",
     "download.qrAlt.groupMatters": "团团记下载二维码",
@@ -299,13 +300,13 @@ window.ETAI_TRANSLATIONS = {
     "app.groupMatters.footer.copyright": "© Etai 应用集 · 团团记 · 开源安卓应用",
     "app.cWeek.footer.copyright": "© Etai 应用集 · C一周通 · 开源安卓应用",
     "app.easyLedger.faq.installTips.body":
-      "轻记账需要 <strong>Android 8.0 及以上</strong>。请从 <a href=\"https://github.com/gnatecheng/easy-ledger/releases/latest\" rel=\"noopener noreferrer\">GitHub Releases</a> 下载<strong>正式签名版</strong> APK 安装。首次安装时，系统可能提示「不允许安装未知应用」——请在设置里为浏览器或文件管理器开启「允许安装未知来源应用」（各品牌路径与 wording 不同）。若提示<strong>签名冲突</strong>，需先卸载旧版再装新版；<strong>卸载会删除应用内数据</strong>，请先使用应用内备份。若曾安装测试版或旧签名版本，请先卸载后再安装当前正式版。",
+      "轻记账需要 <strong>Android 8.0 及以上</strong>。请从本页下载按钮、<a href=\"https://dl.etais.dev/easy-ledger-1.3.3.apk\" rel=\"noopener noreferrer\">dl.etais.dev 直链</a> 或「备用下载（GitHub）」安装<strong>正式签名版</strong> APK。首次安装时，系统可能提示「不允许安装未知应用」——请在设置里为浏览器或文件管理器开启「允许安装未知来源应用」（各品牌路径与 wording 不同）。若提示<strong>签名冲突</strong>，需先卸载旧版再装新版；<strong>卸载会删除应用内数据</strong>，请先使用应用内备份。若曾安装测试版或旧签名版本，请先卸载后再安装当前正式版。",
     "app.groupMatters.faq.installTips.body":
-      "团团记需要 <strong>Android 8.0 及以上</strong>。请从 <a href=\"https://github.com/gnatecheng/group-matters/releases/latest\" rel=\"noopener noreferrer\">GitHub Releases</a> 下载<strong>正式签名版</strong> APK 安装。首次安装时，系统可能提示「不允许安装未知应用」——请在设置里为浏览器或文件管理器开启「允许安装未知来源应用」（各品牌路径与 wording 不同）。若提示<strong>签名冲突</strong>，需先卸载旧版再装新版；<strong>卸载会删除应用内数据</strong>，请先使用应用内 zip 备份。若曾安装测试版或旧签名版本，请先卸载后再安装当前正式版。",
+      "团团记需要 <strong>Android 8.0 及以上</strong>。请从本页下载按钮、<a href=\"https://dl.etais.dev/group-matters-1.5.3.apk\" rel=\"noopener noreferrer\">dl.etais.dev 直链</a> 或「备用下载（GitHub）」安装<strong>正式签名版</strong> APK。首次安装时，系统可能提示「不允许安装未知应用」——请在设置里为浏览器或文件管理器开启「允许安装未知来源应用」（各品牌路径与 wording 不同）。若提示<strong>签名冲突</strong>，需先卸载旧版再装新版；<strong>卸载会删除应用内数据</strong>，请先使用应用内 zip 备份。若曾安装测试版或旧签名版本，请先卸载后再安装当前正式版。",
     "app.groupMatters.faq.requirements.body":
       "Android 8.0 及以上。当前正式版 v1.5.2，安装包约 13.1 MB（以 GitHub Releases 为准）。",
     "app.cWeek.faq.installTips.body":
-      "C一周通需要 <strong>Android 8.0 及以上</strong>。请从 <a href=\"https://github.com/gnatecheng/c-week/releases/latest\" rel=\"noopener noreferrer\">GitHub Releases</a> 下载<strong>正式签名版</strong> APK 安装。首次安装时，系统可能提示「不允许安装未知应用」——请在设置里为浏览器或文件管理器开启「允许安装未知来源应用」（各品牌路径与 wording 不同）。若提示<strong>签名冲突</strong>，需先卸载旧版再装新版；<strong>卸载会删除学习进度等本机数据</strong>，如有导出功能请先备份。",
+      "C一周通需要 <strong>Android 8.0 及以上</strong>。请从本页下载按钮、<a href=\"https://dl.etais.dev/c-week-1.5.2.apk\" rel=\"noopener noreferrer\">dl.etais.dev 直链</a> 或「备用下载（GitHub）」安装<strong>正式签名版</strong> APK。首次安装时，系统可能提示「不允许安装未知应用」——请在设置里为浏览器或文件管理器开启「允许安装未知来源应用」（各品牌路径与 wording 不同）。若提示<strong>签名冲突</strong>，需先卸载旧版再装新版；<strong>卸载会删除学习进度等本机数据</strong>，如有导出功能请先备份。",
     "app.easyLedger.privacy.body":
       "<p>记账流水、分类、账户、预算与提醒设置都保存在本机，无需注册账号，也没有云同步。</p><p>记账时可拍照或从相册选择收据，照片只存在您的手机里，可随时更换或删除。</p><p>应用未声明联网权限，日常记账不需要联网。备份、恢复或导出 CSV/JSON 只有您主动操作时才会生成文件，并通过系统分享或「另存为」离开本机。</p>",
     "app.easyLedger.requirements.body":
@@ -365,7 +366,7 @@ window.ETAI_TRANSLATIONS = {
     "app.easyLedger.highlight.4": "数据备份 / 恢复（zip），导出 CSV",
     "app.easyLedger.faq.install.title": "如何安装轻记账 APK？",
     "app.easyLedger.faq.install.body":
-      "在 <a href=\"https://github.com/gnatecheng/easy-ledger/releases/latest\" rel=\"noopener noreferrer\">GitHub Releases</a> 下载最新 APK 并安装。Android 需允许「安装未知应用」。桌面显示「轻记账」。",
+      "点击本页「下载最新 APK」、扫码，或打开 <a href=\"https://dl.etais.dev/easy-ledger-1.3.3.apk\" rel=\"noopener noreferrer\">dl.etais.dev 直链</a> 安装。亦可使用下载区「备用下载（GitHub）」。Android 需允许「安装未知应用」。桌面显示「轻记账」。",
     "app.easyLedger.faq.requirements.body":
       "Android 8.0 及以上。当前正式版 v1.3.2，安装包约 13.0 MB（以 GitHub Releases 为准）。",
     "app.easyLedger.faq.offline.body":
@@ -389,7 +390,7 @@ window.ETAI_TRANSLATIONS = {
     "app.groupMatters.highlight.6": "桌面小组件、zip 备份、中英文界面",
     "app.groupMatters.faq.install.title": "如何安装团团记 APK？",
     "app.groupMatters.faq.install.body":
-      "在 <a href=\"https://github.com/gnatecheng/group-matters/releases/latest\" rel=\"noopener noreferrer\">GitHub Releases</a> 下载最新 APK 并安装。桌面显示「团团记」。",
+      "点击本页「下载最新 APK」、扫码，或打开 <a href=\"https://dl.etais.dev/group-matters-1.5.3.apk\" rel=\"noopener noreferrer\">dl.etais.dev 直链</a> 安装。亦可使用「备用下载（GitHub）」。桌面显示「团团记」。",
     "app.groupMatters.faq.offline.body":
       "团体与事务数据保存在本机；应用未声明联网权限，日常使用不需要联网，也无登录或后端服务。",
     "app.groupMatters.faq.limits.title": "谁需要安装 App？",
@@ -411,7 +412,7 @@ window.ETAI_TRANSLATIONS = {
     "app.cWeek.highlight.4": "学习进度与打卡报告，可配合 PC 上 VS Code + gcc 跟做",
     "app.cWeek.faq.install.title": "如何安装 C一周通 APK？",
     "app.cWeek.faq.install.body":
-      "在 <a href=\"https://github.com/gnatecheng/c-week/releases/latest\" rel=\"noopener noreferrer\">GitHub Releases</a> 下载最新 APK 并安装。桌面显示「C一周通」。",
+      "点击本页「下载最新 APK」、扫码，或打开 <a href=\"https://dl.etais.dev/c-week-1.5.2.apk\" rel=\"noopener noreferrer\">dl.etais.dev 直链</a> 安装。亦可使用「备用下载（GitHub）」。桌面显示「C一周通」。",
     "app.cWeek.faq.requirements.body":
       "Android 8.0 及以上；内含打包教学视频。当前正式版 v1.5.1，安装包约 15.6 MB（以 GitHub Releases 为准）。",
     "app.cWeek.faq.offline.body":
@@ -558,14 +559,15 @@ window.ETAI_TRANSLATIONS = {
     "faq.lead": "Install, requirements, and offline use — for all three apps on this page.",
     "faq.install.title": "How do I install the APK?",
     "faq.install.body":
-      "Download the latest APK from each app’s GitHub Releases and install: <a href=\"https://github.com/gnatecheng/easy-ledger/releases/latest\" rel=\"noopener noreferrer\">Easy Ledger</a>, <a href=\"https://github.com/gnatecheng/group-matters/releases/latest\" rel=\"noopener noreferrer\">Group Matters</a>, and <a href=\"https://github.com/gnatecheng/c-week/releases/latest\" rel=\"noopener noreferrer\">C Week</a>. Android may ask you to allow installs from unknown sources (varies by OEM). Launcher names are “Easy Ledger”, “Group Matters”, and “C Week”.",
+      "Use each app’s download button or QR code on this page, or open: <a href=\"https://dl.etais.dev/easy-ledger-1.3.3.apk\" rel=\"noopener noreferrer\">Easy Ledger</a>, <a href=\"https://dl.etais.dev/group-matters-1.5.3.apk\" rel=\"noopener noreferrer\">Group Matters</a>, and <a href=\"https://dl.etais.dev/c-week-1.5.2.apk\" rel=\"noopener noreferrer\">C Week</a>. If a link fails, use <strong>Mirror (GitHub)</strong> in the download panel. Android may ask you to allow installs from unknown sources (varies by OEM).",
     "faq.installTips.title": "Install tips (Android version, unknown sources, upgrades)",
     "faq.installTips.body":
-      "All three apps require <strong>Android 8.0 or newer</strong>. Download the <strong>signed release APK</strong> from each app’s GitHub Releases page. On first install, Android may block APKs until you allow <strong>Install unknown apps</strong> for your browser or file manager (wording varies by device). If you see a <strong>signature conflict</strong>, uninstall the old build before installing the new one—<strong>uninstalling erases on-device app data</strong>, so back up first (in-app backup for Easy Ledger / Group Matters; export progress in C Week if available). For <strong>Easy Ledger and Group Matters</strong>, if you previously installed a test build or an APK signed with an older key, uninstall it before installing the current signed release.",
+      "All three apps require <strong>Android 8.0 or newer</strong>. Install the <strong>signed release APK</strong> from the download button or <strong>dl.etais.dev</strong> direct link (each panel also lists a GitHub mirror). On first install, Android may block APKs until you allow <strong>Install unknown apps</strong> for your browser or file manager (wording varies by device). If you see a <strong>signature conflict</strong>, uninstall the old build before installing the new one—<strong>uninstalling erases on-device app data</strong>, so back up first (in-app backup for Easy Ledger / Group Matters; export progress in C Week if available). For <strong>Easy Ledger and Group Matters</strong>, if you previously installed a test build or an APK signed with an older key, uninstall it before installing the current signed release.",
     "download.androidMin": "Android 8.0+",
     "download.apkLabel": "APK",
     "download.scanOr": "or",
-    "download.releasesNote": "GitHub Releases · free & open source",
+    "download.releasesNote": "dl.etais.dev · free & open source",
+    "download.githubMirror": "Mirror (GitHub)",
     "download.qrCaption": "Scan to download",
     "download.qrAlt.easyLedger": "Easy Ledger download QR code",
     "download.qrAlt.groupMatters": "Group Matters download QR code",
@@ -739,13 +741,13 @@ window.ETAI_TRANSLATIONS = {
     "app.groupMatters.footer.copyright": "© Etai Apps · Group Matters · Open-source Android app",
     "app.cWeek.footer.copyright": "© Etai Apps · C Week · Open-source Android app",
     "app.easyLedger.faq.installTips.body":
-      "Easy Ledger requires <strong>Android 8.0 or newer</strong>. Download the <strong>signed release APK</strong> from <a href=\"https://github.com/gnatecheng/easy-ledger/releases/latest\" rel=\"noopener noreferrer\">GitHub Releases</a>. On first install, Android may block APKs until you allow <strong>Install unknown apps</strong> for your browser or file manager (wording varies by device). If you see a <strong>signature conflict</strong>, uninstall the old build before installing the new one—<strong>uninstalling erases on-device app data</strong>, so back up first using in-app backup. If you previously installed a test build or an APK signed with an older key, uninstall it before installing the current signed release.",
+      "Easy Ledger requires <strong>Android 8.0 or newer</strong>. Install the <strong>signed release APK</strong> from this page’s download button, <a href=\"https://dl.etais.dev/easy-ledger-1.3.3.apk\" rel=\"noopener noreferrer\">dl.etais.dev</a>, or <strong>Mirror (GitHub)</strong>. On first install, Android may block APKs until you allow <strong>Install unknown apps</strong> for your browser or file manager (wording varies by device). If you see a <strong>signature conflict</strong>, uninstall the old build before installing the new one—<strong>uninstalling erases on-device app data</strong>, so back up first using in-app backup. If you previously installed a test build or an APK signed with an older key, uninstall it before installing the current signed release.",
     "app.groupMatters.faq.installTips.body":
-      "Group Matters requires <strong>Android 8.0 or newer</strong>. Download the <strong>signed release APK</strong> from <a href=\"https://github.com/gnatecheng/group-matters/releases/latest\" rel=\"noopener noreferrer\">GitHub Releases</a>. On first install, Android may block APKs until you allow <strong>Install unknown apps</strong> for your browser or file manager (wording varies by device). If you see a <strong>signature conflict</strong>, uninstall the old build before installing the new one—<strong>uninstalling erases on-device app data</strong>, so back up first using in-app zip backup. If you previously installed a test build or an APK signed with an older key, uninstall it before installing the current signed release.",
+      "Group Matters requires <strong>Android 8.0 or newer</strong>. Install from the download button, <a href=\"https://dl.etais.dev/group-matters-1.5.3.apk\" rel=\"noopener noreferrer\">dl.etais.dev</a>, or <strong>Mirror (GitHub)</strong>. On first install, Android may block APKs until you allow <strong>Install unknown apps</strong> for your browser or file manager (wording varies by device). If you see a <strong>signature conflict</strong>, uninstall the old build before installing the new one—<strong>uninstalling erases on-device app data</strong>, so back up first using in-app zip backup. If you previously installed a test build or an APK signed with an older key, uninstall it before installing the current signed release.",
     "app.groupMatters.faq.requirements.body":
       "Android 8.0 or newer. Current signed release v1.5.2, about 13.1 MB (see GitHub Releases).",
     "app.cWeek.faq.installTips.body":
-      "C Week requires <strong>Android 8.0 or newer</strong>. Download the <strong>signed release APK</strong> from <a href=\"https://github.com/gnatecheng/c-week/releases/latest\" rel=\"noopener noreferrer\">GitHub Releases</a>. On first install, Android may block APKs until you allow <strong>Install unknown apps</strong> for your browser or file manager (wording varies by device). If you see a <strong>signature conflict</strong>, uninstall the old build before installing the new one—<strong>uninstalling erases on-device progress and data</strong>, so export or back up first if the app offers it.",
+      "C Week requires <strong>Android 8.0 or newer</strong>. Install from the download button, <a href=\"https://dl.etais.dev/c-week-1.5.2.apk\" rel=\"noopener noreferrer\">dl.etais.dev</a>, or <strong>Mirror (GitHub)</strong>. On first install, Android may block APKs until you allow <strong>Install unknown apps</strong> for your browser or file manager (wording varies by device). If you see a <strong>signature conflict</strong>, uninstall the old build before installing the new one—<strong>uninstalling erases on-device progress and data</strong>, so export or back up first if the app offers it.",
     "app.easyLedger.privacy.body":
       "<p>Transactions, categories, accounts, budgets, and reminders stay on your phone—no sign-up and no cloud sync.</p><p>When you log spending, you can attach a receipt photo from the camera or gallery; photos stay on the device and can be replaced or deleted.</p><p>The app does not request the Internet permission—everyday budgeting works offline. Backup, restore, and CSV/JSON export only create files when you choose to, and they leave the phone only if you share or save them.</p>",
     "app.easyLedger.requirements.body":
@@ -805,7 +807,7 @@ window.ETAI_TRANSLATIONS = {
     "app.easyLedger.highlight.4": "Backup / restore (zip) and CSV export",
     "app.easyLedger.faq.install.title": "How do I install Easy Ledger?",
     "app.easyLedger.faq.install.body":
-      "Download the latest APK from <a href=\"https://github.com/gnatecheng/easy-ledger/releases/latest\" rel=\"noopener noreferrer\">GitHub Releases</a> and install. Android may ask you to allow installs from unknown sources. Launcher name: “Easy Ledger”.",
+      "Use the download button or QR on this page, or open the <a href=\"https://dl.etais.dev/easy-ledger-1.3.3.apk\" rel=\"noopener noreferrer\">dl.etais.dev direct link</a>. You can also use <strong>Mirror (GitHub)</strong> in the download panel. Android may ask you to allow installs from unknown sources. Launcher name: “Easy Ledger”.",
     "app.easyLedger.faq.requirements.body":
       "Android 8.0 or newer. Current signed release v1.3.2, about 13.0 MB (see GitHub Releases).",
     "app.easyLedger.faq.offline.body":
@@ -830,7 +832,7 @@ window.ETAI_TRANSLATIONS = {
     "app.groupMatters.highlight.6": "Home-screen widget, zip backup, Chinese & English UI",
     "app.groupMatters.faq.install.title": "How do I install Group Matters?",
     "app.groupMatters.faq.install.body":
-      "Download the latest APK from <a href=\"https://github.com/gnatecheng/group-matters/releases/latest\" rel=\"noopener noreferrer\">GitHub Releases</a> and install. Launcher name: “Group Matters” (团团记).",
+      "Use the download button or QR on this page, or open the <a href=\"https://dl.etais.dev/group-matters-1.5.3.apk\" rel=\"noopener noreferrer\">dl.etais.dev direct link</a>. <strong>Mirror (GitHub)</strong> is also in the download panel. Launcher name: “Group Matters” (团团记).",
     "app.groupMatters.faq.offline.body":
       "Group and activity data stay on your phone; the app does not request the Internet permission—no login or backend for daily use.",
     "app.groupMatters.faq.limits.title": "Who needs to install the app?",
@@ -852,7 +854,7 @@ window.ETAI_TRANSLATIONS = {
     "app.cWeek.highlight.4": "Progress and streak report; pair with VS Code + gcc on a computer",
     "app.cWeek.faq.install.title": "How do I install C Week?",
     "app.cWeek.faq.install.body":
-      "Download the latest APK from <a href=\"https://github.com/gnatecheng/c-week/releases/latest\" rel=\"noopener noreferrer\">GitHub Releases</a> and install. Launcher name: “C Week” (C一周通).",
+      "Use the download button or QR on this page, or open the <a href=\"https://dl.etais.dev/c-week-1.5.2.apk\" rel=\"noopener noreferrer\">dl.etais.dev direct link</a>. <strong>Mirror (GitHub)</strong> is also in the download panel. Launcher name: “C Week” (C一周通).",
     "app.cWeek.faq.requirements.body":
       "Android 8.0 or newer; bundled lesson videos. Current signed release v1.5.1, about 15.6 MB (see GitHub Releases).",
     "app.cWeek.faq.offline.body":

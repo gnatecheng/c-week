@@ -12,7 +12,7 @@ Lesson IDE demos are **real VS Code screen recordings** (H.264, bundled in the A
 ## Homepage
 
 The static **Etai Apps** landing page (C Week features, 7-day path, download links, and two sibling apps) lives at **https://etais.dev**.  
-Source is in [`site/`](site/). The homepage is split by URL: **Chinese** at `/`, **English** at `/en/` (regenerate with `node scripts/build-en-index.mjs` after editing `site/index.html` or FAQ/meta strings). Language toggle navigates between those URLs (hash preserved). **Light / dark / system** theme uses `localStorage`. App version labels are fetched from GitHub Releases when possible (HTML fallbacks if the API fails).
+Source is in [`site/`](site/). The homepage is split by URL: **Chinese** at `/`, **English** at `/en/` (regenerate with `node scripts/build-site.mjs` after editing download panels, app pages, or FAQ strings). Language toggle navigates between those URLs (hash preserved). **Light / dark / system** theme uses `localStorage`. Download buttons and QR codes point at **dl.etais.dev** APK files configured in [`scripts/site-download-config.mjs`](scripts/site-download-config.mjs)—**after publishing a new APK to R2, update that file**, run `python3 scripts/generate-download-qr-svgs.py`, then `node scripts/build-site.mjs`. Version labels beside the download button still refresh from GitHub Releases when possible (`site/js/github-meta.js` does not change download URLs).
 
 ### Site deploy (Cloudflare Worker `etai`)
 
