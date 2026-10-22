@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -33,6 +34,7 @@ import com.py2c.week.ui.strings.LocalAppLocale
 fun PrivacyPolicyScreen(
     strings: AppStrings,
     onBack: () -> Unit,
+    scrollState: ScrollState = rememberScrollState(),
 ) {
     val context = LocalContext.current
     val locale = LocalAppLocale.current
@@ -62,7 +64,7 @@ fun PrivacyPolicyScreen(
             Modifier
                 .padding(padding)
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(scrollState)
                 .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {

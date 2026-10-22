@@ -44,6 +44,7 @@ interface AppStrings {
     val aboutLastUpdate: String
     val aboutSource: String
     val aboutOpenRepo: String
+    val aboutContact: String
     val aboutDescription: String
 
     val settingsPrivacyPolicy: String

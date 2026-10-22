@@ -39,6 +39,7 @@ object StringsZh : AppStrings {
     override val aboutLastUpdate = "构建时间（本地时区）"
     override val aboutSource = "源码仓库"
     override val aboutOpenRepo = "在浏览器中打开 GitHub"
+    override val aboutContact = "联系邮箱"
     override val aboutDescription = "C一周通：7 天 C 语言入门，含微课、离线实验模拟与测验。"
 
     override val settingsPrivacyPolicy = "隐私政策"
