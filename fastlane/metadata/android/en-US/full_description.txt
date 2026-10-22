@@ -18,4 +18,6 @@ Features:
 
 Privacy: no account, no ads, no analytics. The main manifest does not declare INTERNET; progress stays on-device with DataStore. All lesson content and videos ship inside the APK.
 
+Contact / feedback: hi@etais.dev (GitHub Issues also welcome)
+
 Open source (MIT): github.com/gnatecheng/c-week

@@ -8,7 +8,9 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.test.performScrollTo
 import androidx.test.core.app.ApplicationProvider
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.py2c.week.Py2CApplication
@@ -113,6 +115,31 @@ class PrivacyUiRoborazziTest {
             locale = AppLocale.ZH,
             darkTheme = false,
             output = "/opt/cursor/artifacts/cweek-privacy-policy-zh-light.png",
+        )
+    }
+
+    @Test
+    fun privacyPolicyContactEmailZhLight() {
+        val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+        val strings = stringsFor(AppLocale.ZH, context.resources)
+        RuntimeEnvironment.setQualifiers("zh-rCN-w360dp-h720dp-480dpi")
+        composeRule.setContent {
+            Py2CTheme(darkTheme = false) {
+                Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                    CompositionLocalProvider(
+                        LocalStrings provides strings,
+                        LocalAppLocale provides AppLocale.ZH,
+                    ) {
+                        PrivacyPolicyScreen(strings = strings, onBack = {})
+                    }
+                }
+            }
+        }
+        composeRule.waitForIdle()
+        composeRule.onNodeWithText("hi@etais.dev", substring = true).performScrollTo()
+        composeRule.waitForIdle()
+        composeRule.onRoot().captureRoboImage(
+            "/opt/cursor/artifacts/cweek-privacy-policy-contact-zh-light.png",
         )
     }
 

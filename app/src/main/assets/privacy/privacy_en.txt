@@ -53,4 +53,4 @@ Changes
 If this policy changes in a material way, we will update the effective date on this page and note it in release notes or on the website where practical.
 
 Contact
-For privacy questions, contact the publisher via https://etais.dev/ or Discussions / Issues on the relevant GitHub repository.
+For privacy questions, email hi@etais.dev or visit https://etais.dev/. You can also use Discussions / Issues on the relevant GitHub repository.
