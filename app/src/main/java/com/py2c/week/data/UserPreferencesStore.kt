@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
@@ -36,11 +37,13 @@ enum class AppLocale {
 data class UserPreferences(
     val language: LanguagePreference = LanguagePreference.SYSTEM,
     val theme: ThemePreference = ThemePreference.SYSTEM,
+    val privacyNoticeAcknowledged: Boolean = false,
 )
 
 class UserPreferencesStore(private val context: Context) {
     private val languageKey = stringPreferencesKey("language")
     private val themeKey = stringPreferencesKey("theme")
+    private val privacyNoticeKey = booleanPreferencesKey("privacy_notice_ack")
 
     val preferences: Flow<UserPreferences> = context.userPrefsDataStore.data.map { prefs ->
         UserPreferences(
@@ -48,6 +51,7 @@ class UserPreferencesStore(private val context: Context) {
                 ?: LanguagePreference.SYSTEM,
             theme = prefs[themeKey]?.let { runCatching { ThemePreference.valueOf(it) }.getOrNull() }
                 ?: ThemePreference.SYSTEM,
+            privacyNoticeAcknowledged = prefs[privacyNoticeKey] ?: false,
         )
     }
 
@@ -57,6 +61,10 @@ class UserPreferencesStore(private val context: Context) {
 
     suspend fun setTheme(preference: ThemePreference) {
         context.userPrefsDataStore.edit { it[themeKey] = preference.name }
+    }
+
+    suspend fun acknowledgePrivacyNotice() {
+        context.userPrefsDataStore.edit { it[privacyNoticeKey] = true }
     }
 
     companion object {

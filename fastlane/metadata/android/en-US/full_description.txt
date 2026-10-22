@@ -1,0 +1,21 @@
+C Week (Chinese name: C一周通) is a self-contained, offline C course for beginners. It follows a fixed seven-day path:
+
+• Day 1: paths, files and step-by-step bash, setting up a compiler and VS Code, Hello World, debugging
+• Day 2: types, printf/scanf, memory without garbage collection
+• Day 3: if/for, function prototypes, pass-by-value
+• Day 4: arrays, pointers and C strings
+• Day 5: struct, malloc/free and files
+• Day 6: selection sort, adjacency lists and BFS
+• Day 7: capstone, an O(V²) Dijkstra implementation with a grid walkthrough of dist[] and the shortest path
+
+Features:
+• Lessons with short explanations, analogies and bundled screen recordings of the real IDE workflow (played locally with Media3, with a checklist synced to the timeline)
+• Auto-graded quizzes that explain the reason behind each mistake
+• Code labs: edit C in the app and check it against several input/output cases (offline simulated grading — no compiler on the device)
+• Wrong-answer book with retry, study calendar with streaks, shareable learning report, glossary
+• Full Chinese and English UI and curriculum, light/dark/system theme
+• Companion .c files for following along on a PC are in the app assets
+
+Privacy: no account, no ads, no analytics. The main manifest does not declare INTERNET; progress stays on-device with DataStore. All lesson content and videos ship inside the APK.
+
+Open source (MIT): github.com/gnatecheng/c-week

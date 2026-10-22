@@ -1449,10 +1449,36 @@ main > section.project:first-of-type {
   margin: 0;
 }
 
-.app-prose p {
+.app-prose p,
+.privacy-prose p {
   margin: 0 0 0.85rem;
   line-height: 1.55;
   color: var(--text);
+}
+
+.privacy-prose h3 {
+  margin: 1.35rem 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.privacy-prose h4 {
+  margin: 1rem 0 0.4rem;
+  font-size: 1.05rem;
+}
+
+.privacy-prose ul {
+  margin: 0 0 0.85rem 1.25rem;
+  padding: 0;
+  line-height: 1.55;
+}
+
+.privacy-prose .privacy-lead {
+  font-size: 1.05rem;
+}
+
+.privacy-document {
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
 }
 
 .app-prose p:last-child {

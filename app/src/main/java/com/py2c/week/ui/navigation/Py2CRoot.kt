@@ -1,5 +1,7 @@
 package com.py2c.week.ui.navigation
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.MenuBook
@@ -19,7 +21,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -45,7 +50,10 @@ import com.py2c.week.ui.lesson.DemoScreen
 import com.py2c.week.ui.lesson.LessonScreen
 import com.py2c.week.ui.quiz.QuizScreen
 import com.py2c.week.ui.report.ReportScreen
+import com.py2c.week.ui.privacy.PrivacyNoticeOverlay
+import com.py2c.week.ui.privacy.PrivacyPolicyScreen
 import com.py2c.week.ui.settings.SettingsScreen
+import kotlinx.coroutines.launch
 import com.py2c.week.ui.strings.LocalAppLocale
 import com.py2c.week.ui.strings.LocalStrings
 import com.py2c.week.ui.strings.rememberStrings
@@ -81,7 +89,13 @@ fun Py2CRoot(container: AppContainer, userPreferences: UserPreferences) {
         }
         val showBar = route in setOf("home", "labs", "glossary", "wrongs")
         val openWrongs = progress.wrongItems.count { !it.resolved }
+        val scope = rememberCoroutineScope()
+        var showPrivacyNotice by remember { mutableStateOf(false) }
+        LaunchedEffect(userPreferences.privacyNoticeAcknowledged, route) {
+            showPrivacyNotice = !userPreferences.privacyNoticeAcknowledged && route == "home"
+        }
 
+        Box(Modifier.fillMaxSize()) {
         Scaffold(
             bottomBar = {
                 if (showBar) {
@@ -135,6 +149,13 @@ fun Py2CRoot(container: AppContainer, userPreferences: UserPreferences) {
                         strings = strings,
                         preferences = userPreferences,
                         store = container.userPreferencesStore,
+                        onBack = { nav.popBackStack() },
+                        onOpenPrivacyPolicy = { nav.navigate("privacy") },
+                    )
+                }
+                composable("privacy") {
+                    PrivacyPolicyScreen(
+                        strings = strings,
                         onBack = { nav.popBackStack() },
                     )
                 }
@@ -260,6 +281,25 @@ fun Py2CRoot(container: AppContainer, userPreferences: UserPreferences) {
                     TermScreen(term = term, onBack = { nav.popBackStack() })
                 }
             }
+        }
+        if (showPrivacyNotice) {
+            PrivacyNoticeOverlay(
+                strings = strings,
+                onDismiss = {
+                    scope.launch {
+                        container.userPreferencesStore.acknowledgePrivacyNotice()
+                        showPrivacyNotice = false
+                    }
+                },
+                onReadFull = {
+                    scope.launch {
+                        container.userPreferencesStore.acknowledgePrivacyNotice()
+                        showPrivacyNotice = false
+                        nav.navigate("privacy")
+                    }
+                },
+            )
+        }
         }
     }
 }

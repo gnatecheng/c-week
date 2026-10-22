@@ -1,0 +1,56 @@
+Etai Apps Privacy Policy (C Week)
+
+Effective date: 2026-10-13
+Publisher: Ch Etang (Etai Apps)
+Applies to: C Week and other Etai Apps Android apps that adopt this policy
+Canonical URL: https://etais.dev/en/privacy/
+
+In one sentence
+These apps are offline, account-free, and server-free. By default we do not collect or upload personal information. Data stays on your device; files leave the phone only when you export, share, or back them up yourself.
+
+Who we are
+Etai Apps is a personal developer’s set of open-source Android apps. Website: https://etais.dev/
+Source code is on GitHub under the c-week, easy-ledger, and group-matters repositories.
+
+What data we process
+
+1. In-app data (on-device only)
+· C Week: Learning progress, mistake book, language and theme preferences
+· Easy Ledger: Ledger entries, categories, notes, receipt images (if you add them), UI preferences
+· Group Matters: Groups and members, activity progress, group-fund ledger, payment proof images (if you add them), UI preferences
+
+This data is stored in the app’s local storage and is not synced to a cloud service we operate.
+
+2. Content you export or share
+When you use backup, export, copy, or share features, the app may create zip, CSV, text, or image files. Those files appear only where you choose to save or send them. We do not upload them for you.
+
+3. What we do not collect
+· No sign-up or sign-in
+· No identity data such as name, phone number, email, or ID numbers for our services
+· No ad SDKs, analytics SDKs, or crash-reporting SDKs (as reflected in each release’s manifest and dependencies)
+· C Week’s main manifest does not declare INTERNET. The merged install manifest may include ACCESS_NETWORK_STATE from Media3 libraries (network-state detection only; we do not upload your learning data). Normal study does not require a network
+
+Permissions (see the system install prompt for the exact list)
+· C Week: No INTERNET in the main manifest; ACCESS_NETWORK_STATE may appear from Media3 dependencies. Lessons and demo videos ship inside the APK
+· Easy Ledger: Main manifest has no INTERNET or CAMERA permission; optional camera hardware feature; receipt photos via system camera/picker when you choose; merged manifest may include notifications, media read, widgets
+· Group Matters: Main manifest declares no uses-permission entries; widgets and backup/share via OS mechanisms; see install prompt for merged list
+
+We do not request unrelated sensitive permissions. See each repository’s manifest and your device’s install screen for details.
+
+Children
+We do not direct these apps at children or collect children’s data for our services. Because data stays on-device with no accounts, a parent or guardian can manage or uninstall the app on the device.
+
+Security and device changes
+· On-device security depends mainly on your lock screen and system settings
+· Uninstalling usually deletes app data; back up before reinstalling or switching phones
+· Release-signed builds may not overwrite older debug or differently signed builds; uninstalling to fix a signature conflict deletes local data unless you backed up first
+
+Third parties and open source
+· Download stores (GitHub Releases, Coolapk, Google Play, etc.) have their own policies separate from how data is handled inside the apps
+· Open-source libraries are used under their licenses; we do not use them to add tracking services
+
+Changes
+If this policy changes in a material way, we will update the effective date on this page and note it in release notes or on the website where practical.
+
+Contact
+For privacy questions, contact the publisher via https://etais.dev/ or Discussions / Issues on the relevant GitHub repository.

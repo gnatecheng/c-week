@@ -1,0 +1,1 @@
+Google Play and Coolapk readiness: targetSdk 36, signed AAB in CI artifacts, in-app privacy policy and first-launch notice, site privacy pages, Fastlane store metadata, reproducible build timestamps.

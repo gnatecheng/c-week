@@ -60,6 +60,7 @@ async function main() {
   );
 
   html = html.replace(/href="\/#([^"]+)"/g, 'href="/en/#$1"');
+  html = html.replace('href="/privacy/"', 'href="/en/privacy/"');
   html = html.replace('<a class="brand" href="/">', '<a class="brand" href="/en/">');
   html = html.replace(/href="\/easy-ledger\/#features"/g, 'href="/en/easy-ledger/#features"');
   html = html.replace(/href="\/group-matters\/#features"/g, 'href="/en/group-matters/#features"');

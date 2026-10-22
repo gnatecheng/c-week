@@ -255,9 +255,15 @@ window.ETAI_TRANSLATIONS = {
     "class.foot":
       "首页可按标题搜索事务、筛选进行中 / 已归档；新建事务与再开一期提供点名、团费、分摊等快捷标题模板；主题可跟随系统或固定浅色 / 深色（设置中切换）。",
     "footer.copyright": "© Etai 应用集 · 轻记账 / 团团记 / C一周通 · 开源 Android 应用",
+    "footer.privacy": "隐私政策",
     "footer.linkCweek": "c-week",
     "footer.linkQjz": "easy-ledger",
     "footer.linkClass": "group-matters",
+    "privacy.meta.title": "Etai 应用集隐私政策",
+    "privacy.meta.description":
+      "C一周通、轻记账、团团记共用隐私政策：离线、无账号、数据只存本机；权限说明与各应用安装清单一致。",
+    "privacy.pageTitle": "Etai 应用集隐私政策",
+    "privacy.backToHub": "返回 Etai 应用集首页",
     "notfound.metaTitle": "页面未找到 · Etai 应用集",
     "notfound.title": "404",
     "notfound.lead": "找不到该页面。返回首页了解轻记账、团团记与 C一周通。",
@@ -332,7 +338,11 @@ window.ETAI_TRANSLATIONS = {
     "app.cWeek.privacy.body":
       "<p>课文、VS Code 演示视频、实验与测验内容都打包在安装包内；学习进度、打卡与错题记录保存在本机。</p><p>应用未声明联网权限，日常学习不需要联网。手机不会编译 C 代码，实验采用离线模拟判分。</p><p>本介绍网站 etais.dev 使用 Cloudflare Web Analytics 统计访问（与应用 APK 无关）。</p>",
     "app.cWeek.requirements.body":
-      "<p>支持 Android 8.0 及以上。应用内含打包的教学视频，较新的手机系统通常播放更稳定。</p><p>当前版本：C一周通 v1.5.1，安装包约 15.6 MB（以 <a href=\"https://github.com/gnatecheng/c-week/releases\" rel=\"noopener noreferrer\">GitHub Releases</a> 显示为准）。</p><p>正式签名版，请从 GitHub Releases 下载；首次安装需在系统设置中允许「安装未知来源应用」（具体名称因手机而异）。</p>",
+      "<p>支持 Android 8.0 及以上（targetSdk 36）。应用内含打包的教学视频，较新的手机系统通常播放更稳定。</p><p>当前版本：C一周通 v1.5.2，安装包约 15.6 MB（以 <a href=\"https://github.com/gnatecheng/c-week/releases\" rel=\"noopener noreferrer\">GitHub Releases</a> 显示为准）。</p><p>正式签名版，请从 GitHub Releases 下载；首次安装需在系统设置中允许「安装未知来源应用」（具体名称因手机而异）。</p>",
+    "app.cWeek.changelog.152.1":
+      "Google Play / 酷安就绪：targetSdk 36、CI 产出签名 AAB、应用内隐私政策与首次启动说明、官网独立隐私页。",
+    "app.cWeek.changelog.152.2":
+      "Fastlane 商店元数据与截图；可复现构建时间戳；关闭 APK/AAB 依赖信息块。",
     "app.cWeek.changelog.151.1":
       "英文界面的数量说法更自然：1 天显示「1 day」，多天显示「days」，课时、题目等也一样；中文界面不变。",
     "app.cWeek.changelog.150.1": "设置中可切换完整英文课程与界面（7 天课文、测验与实验）。",
@@ -684,9 +694,15 @@ window.ETAI_TRANSLATIONS = {
       "Search activities by title on home; filter in progress / archived; quick title templates for roll call, group fund, and splits when creating activities or starting another round; theme follows system or fixed light/dark in Settings.",
     "footer.copyright":
       "© Etai Apps · Easy Ledger / Group Matters / C Week · Open-source Android apps",
+    "footer.privacy": "Privacy policy",
     "footer.linkCweek": "c-week",
     "footer.linkQjz": "easy-ledger",
     "footer.linkClass": "group-matters",
+    "privacy.meta.title": "Etai Apps Privacy Policy",
+    "privacy.meta.description":
+      "Shared privacy policy for C Week, Easy Ledger, and Group Matters: offline, no accounts, on-device data; permissions match each app’s install manifest.",
+    "privacy.pageTitle": "Etai Apps Privacy Policy",
+    "privacy.backToHub": "Back to Etai Apps homepage",
     "notfound.metaTitle": "Page not found · Etai Apps",
     "notfound.title": "404",
     "notfound.lead":
@@ -762,7 +778,11 @@ window.ETAI_TRANSLATIONS = {
     "app.cWeek.privacy.body":
       "<p>Lessons, VS Code screen recordings, labs, and quizzes ship inside the install package; progress, streaks, and wrong-answer notes stay on your phone.</p><p>The app does not request the Internet permission—everyday study works offline. The phone does not compile C code; labs use offline simulated grading.</p><p>This marketing site, etais.dev, uses Cloudflare Web Analytics (not part of the Android app).</p>",
     "app.cWeek.requirements.body":
-      "<p>Android 8.0 or newer. Bundled lesson videos usually play more reliably on newer phones.</p><p>Current release: C Week v1.5.1, about 15.6 MB (see <a href=\"https://github.com/gnatecheng/c-week/releases\" rel=\"noopener noreferrer\">GitHub Releases</a> for the exact file size).</p><p>Signed release—download from GitHub Releases. On first install, allow <strong>Install unknown apps</strong> for your browser or file manager (wording varies).</p>",
+      "<p>Android 8.0 or newer (targetSdk 36). Bundled lesson videos usually play more reliably on newer phones.</p><p>Current release: C Week v1.5.2, about 15.6 MB (see <a href=\"https://github.com/gnatecheng/c-week/releases\" rel=\"noopener noreferrer\">GitHub Releases</a> for the exact file size).</p><p>Signed release—download from GitHub Releases. On first install, allow <strong>Install unknown apps</strong> for your browser or file manager (wording varies).</p>",
+    "app.cWeek.changelog.152.1":
+      "Google Play / Coolapk readiness: targetSdk 36, signed AAB in CI artifacts, in-app privacy policy and first-launch notice, standalone site privacy pages.",
+    "app.cWeek.changelog.152.2":
+      "Fastlane store metadata and screenshots; reproducible build timestamps; dependency info block disabled in APK/AAB.",
     "app.cWeek.changelog.151.1":
       "More natural English counts: “1 day” vs “2 days”, and the same for lessons, questions, and other items. Chinese UI unchanged.",
     "app.cWeek.changelog.150.1": "Full English curriculum and UI in Settings (7 days of lessons, quizzes, and labs).",
