@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate static QR SVGs for GitHub latest-release download links."""
+"""Generate static QR SVGs for dl.etais.dev APK links (keep in sync with scripts/site-download-config.mjs)."""
 from __future__ import annotations
 
 import io
@@ -14,9 +14,9 @@ OUT_DIR = ROOT / "site" / "assets" / "qr"
 CANVAS = 200
 
 URLS: dict[str, str] = {
-    "c-week.svg": "https://github.com/gnatecheng/c-week/releases/latest",
-    "easy-ledger.svg": "https://github.com/gnatecheng/easy-ledger/releases/latest",
-    "group-matters.svg": "https://github.com/gnatecheng/group-matters/releases/latest",
+    "c-week.svg": "https://dl.etais.dev/c-week-1.5.2.apk",
+    "easy-ledger.svg": "https://dl.etais.dev/easy-ledger-1.3.3.apk",
+    "group-matters.svg": "https://dl.etais.dev/group-matters-1.5.3.apk",
 }
 
 

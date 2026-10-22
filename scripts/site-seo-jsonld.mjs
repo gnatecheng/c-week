@@ -1,3 +1,5 @@
+import { r2ApkUrl } from "./site-download-config.mjs";
+
 /** Shared JSON-LD @graph for zh (/) and en (/en/) homepages. */
 
 export function loadTranslationsFromFile(readFileSync, filePath) {
@@ -29,7 +31,7 @@ export function buildJsonLd(lang, t) {
             category: "EducationalApplication",
             description:
               "Learn C in seven days from Hello World to Dijkstra with bundled VS Code screen recordings and offline labs.",
-            downloadUrl: "https://github.com/gnatecheng/c-week/releases/latest",
+            downloadUrl: r2ApkUrl("c-week"),
           },
           {
             name: "Easy Ledger",
@@ -37,7 +39,7 @@ export function buildJsonLd(lang, t) {
             url: base + "#qingjizhang",
             category: "FinanceApplication",
             description: "Private budgeting that stays on your phone—no sign-up or cloud sync.",
-            downloadUrl: "https://github.com/gnatecheng/easy-ledger/releases/latest",
+            downloadUrl: r2ApkUrl("easy-ledger"),
           },
           {
             name: "Group Matters",
@@ -46,7 +48,7 @@ export function buildJsonLd(lang, t) {
             category: "BusinessApplication",
             description:
               "Small-group attendance, fee collection, cost splits, and checklists—data stays on device.",
-            downloadUrl: "https://github.com/gnatecheng/group-matters/releases/latest",
+            downloadUrl: r2ApkUrl("group-matters"),
           },
         ]
       : [
@@ -57,7 +59,7 @@ export function buildJsonLd(lang, t) {
             category: "EducationalApplication",
             description:
               "7 天从 Hello World 学到 Dijkstra，课文含 VS Code 实操录像，离线实验与测验。",
-            downloadUrl: "https://github.com/gnatecheng/c-week/releases/latest",
+            downloadUrl: r2ApkUrl("c-week"),
           },
           {
             name: "轻记账",
@@ -65,7 +67,7 @@ export function buildJsonLd(lang, t) {
             url: base + "#qingjizhang",
             category: "FinanceApplication",
             description: "无需注册的本地记账，数据只存在你的手机里，不用注册账号，也不上传云端。",
-            downloadUrl: "https://github.com/gnatecheng/easy-ledger/releases/latest",
+            downloadUrl: r2ApkUrl("easy-ledger"),
           },
           {
             name: "团团记",
@@ -73,7 +75,7 @@ export function buildJsonLd(lang, t) {
             url: base + "#group-matters",
             category: "BusinessApplication",
             description: "小团体点名、收费、费用分摊与清单，数据只存本机。",
-            downloadUrl: "https://github.com/gnatecheng/group-matters/releases/latest",
+            downloadUrl: r2ApkUrl("group-matters"),
           },
         ];
 
@@ -153,7 +155,7 @@ export function buildAppPageJsonLd(canonicalUrl, t, app, alternateAppName) {
         operatingSystem: "Android 8.0+",
         applicationCategory: app.category,
         description: stripHtml(t[app.keys.tagline]),
-        downloadUrl: `https://github.com/${app.github}/releases/latest`,
+        downloadUrl: r2ApkUrl(app.slug),
         offers: {
           "@type": "Offer",
           price: "0",

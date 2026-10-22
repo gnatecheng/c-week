@@ -6,6 +6,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { APP_PAGES, GITHUB_ICON_PATH } from "./site-app-config.mjs";
+import { renderDownloadPanel } from "./render-download-panel.mjs";
 import { loadTranslations, t } from "./static-i18n.mjs";
 import { buildAppPageJsonLd } from "./site-seo-jsonld.mjs";
 import {
@@ -173,67 +174,6 @@ function appAccentAttr(app) {
   if (app.slug === "easy-ledger") return "qjz";
   if (app.slug === "group-matters") return "class";
   return "cweek";
-}
-
-function renderDownloadPanel(app, dict) {
-  const name = t(dict, app.keys.name);
-  return `              <div class="download-panel ${app.panelClass}" data-app-meta="${app.appMeta}">
-                <div class="download-panel__body">
-                  <div class="download-panel__left">
-                  <div class="download-panel__head">
-                  <img
-                    class="download-panel__icon"
-                    src="${app.iconSrc}"
-                    width="44"
-                    height="44"
-                    alt="${escAttrLocal(name)}"
-                    decoding="async"
-                  />
-                  <div>
-                    <p class="download-panel__name">${name}</p>
-                    <p class="download-panel__version">
-                      v<span class="app-meta-version">${app.versionFallback}</span><span aria-hidden="true"> · </span
-                      ><span>${t(dict, "download.androidMin")}</span><span aria-hidden="true"> · </span
-                      ><span>${t(dict, "download.apkLabel")}</span>
-                    </p>
-                  </div>
-                </div>
-                  <div class="download-panel__primary">
-                    <a
-                      class="btn btn-primary"
-                      href="https://github.com/${app.github}/releases/latest"
-                      rel="noopener noreferrer"
-                    >
-                      ${t(dict, app.keys.downloadApk)}
-                    </a>
-                    <p class="download-panel__note">${t(dict, "download.releasesNote")}</p>
-                  </div>
-                  </div>
-                  <div class="download-panel__divider" role="presentation">
-                    <div class="download-panel__divider-track">
-                      <span class="download-panel__divider-label">${t(dict, "download.scanOr")}</span>
-                    </div>
-                  </div>
-                  <div class="download-panel__scan">
-                    <figure class="download-panel__qr">
-                      <div class="download-panel__qr-frame">
-                        <img src="${app.qrSrc}" width="120" height="120" alt="${escAttrLocal(t(dict, app.qrAltKey))}" decoding="async" />
-                      </div>
-                      <figcaption>${t(dict, "download.qrCaption")}</figcaption>
-                    </figure>
-                  </div>
-                </div>
-              </div>
-              <a
-                class="download-panel__source"
-                href="https://github.com/${app.github}"
-                rel="noopener noreferrer"
-              >
-                <svg class="icon-github" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="${GITHUB_ICON_PATH}" />
-                </svg>
-                <span>${t(dict, app.keys.viewGithub)}</span>
-              </a>`;
 }
 
 function renderFooter(app, dict, isEn) {
