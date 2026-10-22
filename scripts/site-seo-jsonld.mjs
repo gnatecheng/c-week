@@ -1,4 +1,5 @@
 import { r2ApkUrl } from "./site-download-config.mjs";
+import { PUBLIC_CONTACT_EMAIL } from "./site-contact.mjs";
 
 /** Shared JSON-LD @graph for zh (/) and en (/en/) homepages. */
 
@@ -87,6 +88,12 @@ export function buildJsonLd(lang, t) {
       name: siteName,
       alternateName: altSite,
       inLanguage: lang === "en" ? "en-US" : "zh-CN",
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: PUBLIC_CONTACT_EMAIL,
+        contactType: "customer support",
+        availableLanguage: ["zh-CN", "en"],
+      },
     },
     ...apps.map((app, i) => ({
       "@type": "SoftwareApplication",
@@ -160,6 +167,11 @@ export function buildAppPageJsonLd(canonicalUrl, t, app, alternateAppName) {
           "@type": "Offer",
           price: "0",
           priceCurrency: "USD",
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          email: PUBLIC_CONTACT_EMAIL,
+          contactType: "customer support",
         },
       },
       {

@@ -256,6 +256,7 @@ window.ETAI_TRANSLATIONS = {
     "class.foot":
       "首页可按标题搜索事务、筛选进行中 / 已归档；新建事务与再开一期提供点名、团费、分摊等快捷标题模板；主题可跟随系统或固定浅色 / 深色（设置中切换）。",
     "footer.copyright": "© Etai 应用集 · 轻记账 / 团团记 / C一周通 · 开源 Android 应用",
+    "footer.contactEmail": "hi@etais.dev",
     "footer.privacy": "隐私政策",
     "footer.linkCweek": "c-week",
     "footer.linkQjz": "easy-ledger",
@@ -696,6 +697,7 @@ window.ETAI_TRANSLATIONS = {
       "Search activities by title on home; filter in progress / archived; quick title templates for roll call, group fund, and splits when creating activities or starting another round; theme follows system or fixed light/dark in Settings.",
     "footer.copyright":
       "© Etai Apps · Easy Ledger / Group Matters / C Week · Open-source Android apps",
+    "footer.contactEmail": "hi@etais.dev",
     "footer.privacy": "Privacy policy",
     "footer.linkCweek": "c-week",
     "footer.linkQjz": "easy-ledger",

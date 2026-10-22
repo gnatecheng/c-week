@@ -15,41 +15,12 @@ import {
   SITE_JS_V,
   TRANSLATIONS_V,
 } from "./site-cache-versions.mjs";
-import { GITHUB_ICON_PATH } from "./site-app-config.mjs";
+import { renderHubFooter } from "./render-site-footer.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 function escAttr(s) {
   return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
-}
-
-function renderHubFooter(dict, isEn) {
-  const privacyHref = isEn ? "/en/privacy/" : "/privacy/";
-  const hubHref = isEn ? "/en/" : "/";
-  return `    <footer class="site-footer">
-      <div class="wrap inner">
-        <p>${t(dict, "footer.copyright")}</p>
-        <p class="footer-links">
-          <a href="${privacyHref}">${t(dict, "footer.privacy")}</a>
-          <a href="https://github.com/gnatecheng/c-week" rel="noopener noreferrer"
-            ><svg class="icon-github" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"
-              ><path d="${GITHUB_ICON_PATH}" /></svg
-            ><span>${t(dict, "footer.linkCweek")}</span></a
-          >
-          <a href="https://github.com/gnatecheng/easy-ledger" rel="noopener noreferrer"
-            ><svg class="icon-github" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"
-              ><path d="${GITHUB_ICON_PATH}" /></svg
-            ><span>${t(dict, "footer.linkQjz")}</span></a
-          >
-          <a href="https://github.com/gnatecheng/group-matters" rel="noopener noreferrer"
-            ><svg class="icon-github" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"
-              ><path d="${GITHUB_ICON_PATH}" /></svg
-            ><span>${t(dict, "footer.linkClass")}</span></a
-          >
-        </p>
-        <p class="footer-hub-link"><a href="${hubHref}">${t(dict, "privacy.backToHub")}</a></p>
-      </div>
-    </footer>`;
 }
 
 function renderPage(isEn, dict) {
