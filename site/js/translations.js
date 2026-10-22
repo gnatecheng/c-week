@@ -261,7 +261,7 @@ window.ETAI_TRANSLATIONS = {
     "footer.linkClass": "group-matters",
     "privacy.meta.title": "Etai 应用集隐私政策",
     "privacy.meta.description":
-      "C一周通、轻记账、团团记共用隐私政策：离线、无账号、数据只存本机；权限说明与各应用安装清单一致。",
+      "C一周通、轻记账、团团记共用隐私政策：离线、无账号、数据只存本机；安装权限说明与正式版清单一致；含 etais.dev 网站访问日志说明。",
     "privacy.pageTitle": "Etai 应用集隐私政策",
     "privacy.backToHub": "返回 Etai 应用集首页",
     "notfound.metaTitle": "页面未找到 · Etai 应用集",
@@ -700,7 +700,7 @@ window.ETAI_TRANSLATIONS = {
     "footer.linkClass": "group-matters",
     "privacy.meta.title": "Etai Apps Privacy Policy",
     "privacy.meta.description":
-      "Shared privacy policy for C Week, Easy Ledger, and Group Matters: offline, no accounts, on-device data; permissions match each app’s install manifest.",
+      "Shared privacy policy for C Week, Easy Ledger, and Group Matters: offline, no accounts, on-device data; install permissions match release manifests; includes etais.dev visit log disclosure.",
     "privacy.pageTitle": "Etai Apps Privacy Policy",
     "privacy.backToHub": "Back to Etai Apps homepage",
     "notfound.metaTitle": "Page not found · Etai Apps",
