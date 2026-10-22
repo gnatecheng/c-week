@@ -1,16 +1,20 @@
 package com.py2c.week.ui.privacy
 
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performScrollTo
+import com.py2c.week.ContactEmail
 import androidx.test.core.app.ApplicationProvider
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.py2c.week.Py2CApplication
@@ -41,6 +45,7 @@ import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import java.time.LocalDate
+import kotlinx.coroutines.runBlocking
 
 @RunWith(RobolectricTestRunner::class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -123,23 +128,72 @@ class PrivacyUiRoborazziTest {
         val context = ApplicationProvider.getApplicationContext<android.content.Context>()
         val strings = stringsFor(AppLocale.ZH, context.resources)
         RuntimeEnvironment.setQualifiers("zh-rCN-w360dp-h720dp-480dpi")
+        val scrollRef = arrayOfNulls<ScrollState>(1)
         composeRule.setContent {
+            val scrollState = rememberScrollState()
+            scrollRef[0] = scrollState
             Py2CTheme(darkTheme = false) {
                 Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     CompositionLocalProvider(
                         LocalStrings provides strings,
                         LocalAppLocale provides AppLocale.ZH,
                     ) {
-                        PrivacyPolicyScreen(strings = strings, onBack = {})
+                        PrivacyPolicyScreen(
+                            strings = strings,
+                            onBack = {},
+                            scrollState = scrollState,
+                        )
                     }
                 }
             }
         }
         composeRule.waitForIdle()
-        composeRule.onNodeWithText("hi@etais.dev", substring = true).performScrollTo()
+        composeRule.waitUntil(timeoutMillis = 10_000) { (scrollRef[0]?.maxValue ?: 0) > 0 }
+        val scrollState = scrollRef[0]!!
+        composeRule.runOnIdle {
+            runBlocking {
+                // Single Text block for policy body — scroll to bottom so 联系方式 + email are in view.
+                scrollState.scrollTo(scrollState.maxValue)
+            }
+        }
         composeRule.waitForIdle()
         composeRule.onRoot().captureRoboImage(
             "/opt/cursor/artifacts/cweek-privacy-policy-contact-zh-light.png",
+        )
+    }
+
+    @Test
+    fun settingsAboutContactEmailZhLight() {
+        val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+        val container = AppContainer(context)
+        val strings = stringsFor(AppLocale.ZH, context.resources)
+        RuntimeEnvironment.setQualifiers("zh-rCN-w360dp-h720dp-480dpi")
+        composeRule.setContent {
+            Py2CTheme(darkTheme = false) {
+                Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                    CompositionLocalProvider(
+                        LocalStrings provides strings,
+                        LocalAppLocale provides AppLocale.ZH,
+                        LocalContainer provides container,
+                    ) {
+                        SettingsScreen(
+                            strings = strings,
+                            preferences = UserPreferences(),
+                            store = container.userPreferencesStore,
+                            onBack = {},
+                            onOpenPrivacyPolicy = {},
+                        )
+                    }
+                }
+            }
+        }
+        composeRule.waitForIdle()
+        composeRule
+            .onNodeWithText("${strings.aboutContact}: ${ContactEmail.PUBLIC}", substring = true)
+            .performScrollTo()
+        composeRule.waitForIdle()
+        composeRule.onRoot().captureRoboImage(
+            "/opt/cursor/artifacts/cweek-settings-about-contact-zh-light.png",
         )
     }
 
