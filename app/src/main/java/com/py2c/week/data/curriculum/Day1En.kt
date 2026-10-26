@@ -144,6 +144,11 @@ internal fun day1En(): CourseDay = CourseDay(
                     "Localized UI",
                     "Search the marketplace for Chinese (Simplified) Language Pack if you want it. Course screencasts use English menu names.",
                 ),
+                Callout(
+                    CalloutKind.TIP,
+                    "Free / open-source editor alternative",
+                    "If you prefer to avoid Microsoft’s official build, VSCodium (https://vscodium.com/) and similar community builds track VS Code’s open-source core: same shortcuts, integrated terminal, and Open Folder workflow as this course.",
+                ),
             ),
         ),
         Lesson(
@@ -158,6 +163,11 @@ internal fun day1En(): CourseDay = CourseDay(
                     CalloutKind.WARN,
                     "Skip the theme pack for now",
                     "Install only C/C++ first. One-click run plugins hide which compile command ran. This week you type gcc in the integrated terminal.",
+                ),
+                Callout(
+                    CalloutKind.TIP,
+                    "Open-source C/C++ tooling alternative",
+                    "Microsoft C/C++ (ms-vscode.cpptools) includes proprietary pieces. You can use the open-source clangd extension (e.g. vscode-clangd on the marketplace) with system gcc/clang for completion and navigation; still compile with gcc in the integrated terminal. For debugging, free extensions such as CodeLLDB work, or add Microsoft’s extension when you reach the debug lesson. Screencasts still demo official VS Code + C/C++.",
                 ),
             ),
         ),

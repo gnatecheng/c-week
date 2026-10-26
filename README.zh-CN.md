@@ -124,7 +124,7 @@ com.py2c.week
   ui/navigation  Navigation Compose + 底栏
 ```
 
-- **离线优先**：无后端。课文与 `assets/vscode_demos/*.mp4` 打进 APK。
+- **离线优先**：无后端。课文与 `assets/vscode_demos/*.mp4` 打进 APK（本仓库原创录屏，与源码同 [MIT 许可](LICENSE)）。
 - **进度**：Jetpack DataStore Preferences（课时 / 实验 / 测验分数 / 揭晓答案 / 错题本）。
 - **ViewModel**：`ProgressViewModel` 把进度 Flow 交给界面。
 - **模拟评测**：多组用例 + 正则/子串检查 + 常见 C 写法提示，不是手机上的 gcc。部分通过会显示分数，全部通过才记实验完成。

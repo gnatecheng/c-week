@@ -116,7 +116,7 @@ com.py2c.week
   ui/navigation  Navigation Compose + bottom bar
 ```
 
-- **Offline-first:** no backend. Lessons and `assets/vscode_demos/*.mp4` ship in the APK.
+- **Offline-first:** no backend. Lessons and `assets/vscode_demos/*.mp4` ship in the APK (original course screencasts, same [MIT license](LICENSE) as the app source).
 - **Progress:** Jetpack DataStore Preferences (lessons / labs / quiz scores / reveal answers / wrong book).
 - **ViewModel:** `ProgressViewModel` exposes progress Flows to the UI.
 - **Simulated grading:** multiple cases + regex/substring checks + common C mistake hints—not on-device gcc. Partial credit shows a score; lab completes only when all cases pass.

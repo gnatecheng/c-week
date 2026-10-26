@@ -24,6 +24,7 @@ import com.py2c.week.data.CheckInClock
 import com.py2c.week.data.ProgressSnapshot
 import com.py2c.week.data.UserPreferences
 import com.py2c.week.ui.home.HomeScreen
+import com.py2c.week.ui.lesson.LessonScreen
 import com.py2c.week.ui.navigation.LocalContainer
 import com.py2c.week.ui.settings.SettingsScreen
 import com.py2c.week.ui.strings.LocalAppLocale
@@ -232,6 +233,24 @@ class PrivacyUiRoborazziTest {
     }
 
     @Test
+    fun fastlaneLessonZhLight() {
+        captureLesson(
+            locale = AppLocale.ZH,
+            lessonId = "d1-l2",
+            output = "/workspace/fastlane/metadata/android/zh-CN/images/phoneScreenshots/02_lesson.png",
+        )
+    }
+
+    @Test
+    fun fastlaneLessonEnLight() {
+        captureLesson(
+            locale = AppLocale.EN,
+            lessonId = "d1-l2",
+            output = "/workspace/fastlane/metadata/android/en-US/images/phoneScreenshots/02_lesson.png",
+        )
+    }
+
+    @Test
     fun fastlaneHomeEnLight() {
         val context = ApplicationProvider.getApplicationContext<android.content.Context>()
         val container = AppContainer(context)
@@ -269,6 +288,40 @@ class PrivacyUiRoborazziTest {
         checkinDates = setOf(fixedToday.toString()),
         checkedCourseDays = setOf(1),
     )
+
+    private fun captureLesson(locale: AppLocale, lessonId: String, output: String) {
+        val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+        val container = AppContainer(context)
+        val curriculum = container.curriculumFor(locale)
+        val day = curriculum.days.first { it.id == 1 }
+        val lesson = day.lessons.first { it.id == lessonId }
+        val strings = stringsFor(locale, context.resources)
+        RuntimeEnvironment.setQualifiers(phoneQualifiers)
+        composeRule.setContent {
+            Py2CTheme(darkTheme = false) {
+                Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                    CompositionLocalProvider(
+                        LocalStrings provides strings,
+                        LocalAppLocale provides locale,
+                        LocalContainer provides container,
+                    ) {
+                        LessonScreen(
+                            day = day,
+                            lesson = lesson,
+                            demos = curriculum.demos,
+                            videos = curriculum.videos,
+                            completed = false,
+                            onBack = {},
+                            onOpenDemo = {},
+                            onMarkDone = {},
+                        )
+                    }
+                }
+            }
+        }
+        composeRule.waitForIdle()
+        composeRule.onRoot().captureRoboImage(output)
+    }
 
     private fun captureSettings(locale: AppLocale, darkTheme: Boolean, output: String) {
         val context = ApplicationProvider.getApplicationContext<android.content.Context>()

@@ -144,6 +144,11 @@ internal fun day1(): CourseDay = CourseDay(
                     "中文界面",
                     "扩展市场搜索 Chinese (Simplified) Language Pack，安装后按提示切换。本课录像用英文菜单名，字幕给中文。",
                 ),
+                Callout(
+                    CalloutKind.TIP,
+                    "自由／开源替代编辑器",
+                    "若希望避开微软官方发行版，可用 VSCodium（https://vscodium.com/）等基于 VS Code 源码的社区构建：界面与快捷键基本相同，集成终端与「打开文件夹」用法与本课一致。",
+                ),
             ),
         ),
         Lesson(
@@ -158,6 +163,11 @@ internal fun day1(): CourseDay = CourseDay(
                     CalloutKind.WARN,
                     "不要先装一堆主题",
                     "先只装 C/C++。所谓「一键运行」插件会掩盖你到底调用了哪条编译命令。本周用集成终端亲手敲 gcc。",
+                ),
+                Callout(
+                    CalloutKind.TIP,
+                    "开源 C/C++ 语言服务替代",
+                    "Microsoft C/C++（ms-vscode.cpptools）含专有组件。可改装开源 clangd 扩展（如 marketplace 上的 vscode-clangd），配合系统 gcc/clang 获得补全与跳转；编译仍在集成终端敲 gcc。调试可用 CodeLLDB 等自由扩展，或到调试课再按需安装 Microsoft 扩展。本课录像仍演示官方 VS Code + C/C++ 路径。",
                 ),
             ),
         ),
