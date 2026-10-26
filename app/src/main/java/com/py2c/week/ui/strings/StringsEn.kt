@@ -41,6 +41,7 @@ class StringsEn(private val resources: Resources) : AppStrings {
     override val aboutLastUpdate = "Build time (local)"
     override val aboutSource = "Source repository"
     override val aboutOpenRepo = "Open on GitHub"
+    override val aboutContact = "Contact email"
     override val aboutDescription = "C Week: a 7-day C intro with lessons, offline lab simulation, and quizzes."
 
     override val settingsPrivacyPolicy = "Privacy policy"

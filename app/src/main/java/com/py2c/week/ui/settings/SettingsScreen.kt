@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.py2c.week.BuildConfig
+import com.py2c.week.ContactEmail
 import com.py2c.week.data.LanguagePreference
 import com.py2c.week.data.ThemePreference
 import com.py2c.week.data.UserPreferences
@@ -118,6 +119,22 @@ fun SettingsScreen(
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
+                    Text(
+                        "${strings.aboutContact}: ${ContactEmail.PUBLIC}",
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
+                    OutlinedButton(
+                        onClick = {
+                            context.startActivity(
+                                Intent(Intent.ACTION_SENDTO, Uri.parse(ContactEmail.MAILTO)),
+                            )
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(48.dp),
+                    ) {
+                        Text(ContactEmail.PUBLIC)
+                    }
                     Text(
                         strings.aboutSource,
                         style = MaterialTheme.typography.labelLarge,

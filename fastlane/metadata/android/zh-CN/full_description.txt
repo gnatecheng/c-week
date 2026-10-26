@@ -18,4 +18,6 @@ C一周通（英文名 C Week）是一门完全离线、自包含的 C 语言入
 
 隐私：无账号、无广告、无统计。主清单未声明 INTERNET 权限；学习进度保存在本机 DataStore。课文与视频均在 APK 内。
 
+联系 / 反馈：hi@etais.dev（GitHub Issues 亦可）
+
 开源（MIT）：github.com/gnatecheng/c-week
