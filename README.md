@@ -1,6 +1,6 @@
 **English** | [中文](README.zh-CN.md)
 
-[Homepage: Etai Apps — C Week section](https://etais.dev/#cweek)
+[Download & product pages: etais.dev — C Week](https://etais.dev/#cweek)
 
 # C Week
 
@@ -9,22 +9,13 @@ In seven days, take programming beginners to the point where they can **implemen
 **Brand name:** **C一周通** (English: **C Week**).  
 Lesson IDE demos are **real VS Code screen recordings** (H.264, bundled in the APK), played with Media3 and a checklist synced to the timeline. Static illustrations are fallbacks when no recording exists.
 
-## Homepage
+## Website & downloads
 
-The static **Etai Apps** landing page (C Week features, 7-day path, download links, and two sibling apps) lives at **https://etais.dev**.  
-Source is in [`site/`](site/). The homepage is split by URL: **Chinese** at `/`, **English** at `/en/` (regenerate with `node scripts/build-site.mjs` after editing download panels, app pages, or FAQ strings). Language toggle navigates between those URLs (hash preserved). **Light / dark / system** theme uses `localStorage`. Download buttons and QR codes point at **dl.etais.dev** APK files configured in [`scripts/site-download-config.mjs`](scripts/site-download-config.mjs)—**after publishing a new APK to R2, update that file**, run `python3 scripts/generate-download-qr-svgs.py`, then `node scripts/build-site.mjs`. Version labels beside the download button still refresh from GitHub Releases when possible (`site/js/github-meta.js` does not change download URLs).
+The **Etai Apps** marketing site (features, download links, privacy pages) is served at **[https://etais.dev](https://etais.dev)**. Source and deploy tooling live in **[gnatecheng/etais-web](https://github.com/gnatecheng/etais-web)**—not in this repository.
 
-### Site deploy (Cloudflare Worker `etai`)
+This repo is **C Week / C一周通 Android app source only**. After you publish a release APK, update download URLs and site copy in **etais-web** as documented there.
 
-**Only automatic deploy path:** Cloudflare **Workers Builds** (Git integration). Each push to `main` deploys Worker **`etai`** from [`wrangler.jsonc`](wrangler.jsonc) at the repo root; static assets from [`site/`](site/); 404 via [`site/404.html`](site/404.html) (`not_found_handling: 404-page`).
-
-- Local preview: `npx wrangler dev` (repo root) or any static server serving `site/`.
-- Security and cache: [`site/_headers`](site/_headers). `/css/*` and `/js/*` are cached 7 days as `immutable`; **after editing any CSS/JS, bump the `?v=` query on script/style URLs in [`site/index.html`](site/index.html) and [`site/404.html`](site/404.html)** so returning visitors do not keep stale assets.
-- Do **not** use the removed GitHub Actions “Deploy site to Cloudflare Pages” workflow (wrong Pages project, missing secrets).
-
-### Cloudflare Web Analytics
-
-The site uses Cloudflare Web Analytics (beacon in [`site/index.html`](site/index.html)). CSP in [`site/_headers`](site/_headers) allows `static.cloudflareinsights.com` and `cloudflareinsights.com`.
+Play Store–style screenshots and icons for this app are under [`fastlane/metadata/android/`](fastlane/metadata/android/). Refresh home screenshots from Roborazzi PNGs with [`scripts/update-cweek-home-screenshots.sh`](scripts/update-cweek-home-screenshots.sh); regenerate store icons with [`scripts/export-launcher-icons.py`](scripts/export-launcher-icons.py).
 
 ### Release signing & GitHub Secrets
 
@@ -51,16 +42,6 @@ base64 -w0 release.keystore   # macOS/Linux → GitHub Secret ANDROID_KEYSTORE_B
 Optional local release build: put `release.keystore` in the repo root and set `ANDROID_KEYSTORE_FILE`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS` (and optional `ANDROID_KEY_PASSWORD`), then `./gradlew :app:assembleRelease`. **Never** commit keystore or passwords.
 
 **Release tags:** use semver only (e.g. `v1.5.0`); do not use date tags (e.g. `v20260928`) to avoid duplicate releases.
-
-Homepage screenshots live under `site/assets/screens/` (WebP, ~540px wide) from real Compose UI in debug APKs. The page loads `/assets/screens/{zh|en}/{light|dark}/{app}/…` (fallback chain in README); legacy `screens/{app}/` is treated as Chinese light. When adb/emulator capture is unavailable, Roborazzi + Robolectric can record in a temporary build (not committed in the Android module).
-
-Apps featured on the homepage:
-
-| App | Summary | Repository |
-| --- | --- | --- |
-| C Week | Learn C in 7 days, Hello World → Dijkstra (this repo) | [gnatecheng/c-week](https://github.com/gnatecheng/c-week) |
-| Easy Ledger | Local-first personal finance (Room, no login) | [gnatecheng/easy-ledger](https://github.com/gnatecheng/easy-ledger) |
-| Group Matters | Attendance, payments, splits, checklists | [gnatecheng/group-matters](https://github.com/gnatecheng/group-matters) |
 
 ---
 

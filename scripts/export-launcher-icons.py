@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
-"""Export adaptive Android launcher icons to site/assets/app-icons/*.webp (128×128, rounded)."""
+"""Export this app's adaptive launcher icon to Fastlane Play Store metadata PNGs."""
 from __future__ import annotations
 
-import re
 import subprocess
 import tempfile
-import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "site" / "assets" / "app-icons"
-SIZE = 128
+SIZE = 512
 RADIUS_RATIO = 24 / 108  # match adaptive icon corner feel
 
 ANDROID_NS = "{http://schemas.android.com/apk/res/android}"
+
+FASTLANE_ICONS = (
+    ROOT / "fastlane/metadata/android/zh-CN/images/icon.png",
+    ROOT / "fastlane/metadata/android/en-US/images/icon.png",
+)
 
 
 def android_paths_from_vector(xml_text: str) -> list[tuple[str, str]]:
@@ -26,10 +28,6 @@ def android_paths_from_vector(xml_text: str) -> list[tuple[str, str]]:
         if d:
             out.append((d, fill))
     return out
-
-
-def solid_bg_svg(color: str) -> str:
-    return f'<rect width="108" height="108" fill="{color}"/>'
 
 
 def paths_to_svg_inner(paths: list[tuple[str, str]]) -> str:
@@ -70,66 +68,27 @@ def round_mask_png(png_path: Path) -> None:
     im.save(png_path, optimize=True)
 
 
-def save_webp(png_path: Path, webp_path: Path) -> None:
-    from PIL import Image
-
-    im = Image.open(png_path).convert("RGBA")
-    im.save(webp_path, "WEBP", quality=88, method=6)
-
-
-def export_cweek() -> None:
+def export_cweek_icon() -> None:
     bg = (ROOT / "app/src/main/res/drawable/ic_launcher_background.xml").read_text(encoding="utf-8")
     fg = (ROOT / "app/src/main/res/drawable/ic_launcher_foreground.xml").read_text(encoding="utf-8")
     svg = compose_svg(
         paths_to_svg_inner(android_paths_from_vector(bg)),
         paths_to_svg_inner(android_paths_from_vector(fg)),
     )
-    png = OUT / "c-week.png"
+    with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
+        png = Path(f.name)
     rsvg_to_png(svg, png)
     round_mask_png(png)
-    save_webp(png, OUT / "c-week.webp")
-
-
-def export_easy_ledger() -> None:
-    fg_url = "https://raw.githubusercontent.com/gnatecheng/easy-ledger/main/app/src/main/res/drawable/ic_launcher_foreground.xml"
-    fg = urllib.request.urlopen(fg_url, timeout=30).read().decode("utf-8")
-    svg = compose_svg(
-        solid_bg_svg("#1F6F6A"),
-        paths_to_svg_inner(android_paths_from_vector(fg)),
-    )
-    png = OUT / "easy-ledger.png"
-    rsvg_to_png(svg, png)
-    round_mask_png(png)
-    save_webp(png, OUT / "easy-ledger.webp")
-
-
-def export_group_matters() -> None:
-    fg_url = (
-        "https://raw.githubusercontent.com/gnatecheng/group-matters/main/"
-        "app/src/main/res/drawable/ic_launcher_fg.xml"
-    )
-    fg = urllib.request.urlopen(fg_url, timeout=30).read().decode("utf-8")
-    # @color/ic_launcher_bg from group-matters app/src/main/res/values/colors.xml
-    svg = compose_svg(solid_bg_svg("#2962FF"), paths_to_svg_inner(android_paths_from_vector(fg)))
-    png = OUT / "group-matters.png"
-    rsvg_to_png(svg, png)
-    round_mask_png(png)
-    save_webp(png, OUT / "group-matters.webp")
+    for dest in FASTLANE_ICONS:
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(png.read_bytes())
+        print(dest.relative_to(ROOT), dest.stat().st_size, "bytes")
+    png.unlink(missing_ok=True)
 
 
 def main() -> None:
-    OUT.mkdir(parents=True, exist_ok=True)
-    export_cweek()
+    export_cweek_icon()
     print("exported c-week from app/src/main/res/drawable/ic_launcher_{background,foreground}.xml")
-    export_easy_ledger()
-    print("exported easy-ledger from easy-ledger drawable/ic_launcher_* + bg #1F6F6A")
-    export_group_matters()
-    print(
-        "exported group-matters from group-matters drawable/ic_launcher_fg.xml + colors ic_launcher_bg #2962FF"
-    )
-    for name in ("c-week", "easy-ledger", "group-matters"):
-        p = OUT / f"{name}.webp"
-        print(p.relative_to(ROOT), p.stat().st_size, "bytes")
 
 
 if __name__ == "__main__":
