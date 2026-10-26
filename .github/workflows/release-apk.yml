@@ -84,13 +84,16 @@ jobs:
           export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)"
           ./gradlew :app:assembleRelease :app:bundleRelease --no-daemon
 
-      - name: Prepare release asset
+      - name: Prepare release assets
         run: |
           VERSION_NAME="${{ steps.version.outputs.name }}"
           APK_NAME="c-week-${VERSION_NAME}.apk"
+          AAB_NAME="c-week-${VERSION_NAME}.aab"
           cp app/build/outputs/apk/release/app-release.apk "${APK_NAME}"
+          cp app/build/outputs/bundle/release/app-release.aab "${AAB_NAME}"
           echo "APK_NAME=${APK_NAME}" >> "$GITHUB_ENV"
-          ls -la "${APK_NAME}"
+          echo "AAB_NAME=${AAB_NAME}" >> "$GITHUB_ENV"
+          ls -la "${APK_NAME}" "${AAB_NAME}"
 
       - name: Upload release AAB artifact
         uses: actions/upload-artifact@v4
@@ -119,8 +122,10 @@ jobs:
             echo
             echo "---"
             echo
-            echo "Release 包为 \`assembleRelease\` 正式签名版，applicationId \`com.py2c.week\`，由 CI 使用仓库 Secrets 中的发布 keystore 签名。"
-            echo "Google Play 用的 AAB 见本 workflow 的 Artifacts（不附在 GitHub Release 上）。"
+            echo "本 Release 附带两个正式签名包（applicationId \`com.py2c.week\`，CI 使用仓库 Secrets 中的发布 keystore 签名）："
+            echo "- **APK**（\`c-week-*.apk\`）：侧载 / 官网下载（亦同步至 [dl.etais.dev](https://dl.etais.dev)）。"
+            echo "- **AAB**（\`c-week-*.aab\`）：上传 Google Play。"
+            echo "Workflow Artifacts 中仍保留 AAB 副本作为备份。"
           } > release_body.md
 
       - name: Publish GitHub Release
@@ -129,7 +134,9 @@ jobs:
         with:
           name: C一周通 ${{ steps.version.outputs.name }}
           body_path: release_body.md
-          files: ${{ env.APK_NAME }}
+          files: |
+            ${{ env.APK_NAME }}
+            ${{ env.AAB_NAME }}
           fail_on_unmatched_files: true
 
       - name: Upload release APK to Cloudflare R2 (etai-apk)
