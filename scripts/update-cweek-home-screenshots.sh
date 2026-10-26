@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Convert Roborazzi PNGs to site WebP (540px wide) for 01-home.
+# Convert Roborazzi PNGs to Fastlane phone screenshots (01_home.png).
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-ART="/opt/cursor/artifacts"
+ART="${ART:-/opt/cursor/artifacts}"
 
-convert_one() {
+copy_one() {
   local src="$1"
   local dest="$2"
   if [[ ! -f "$src" ]]; then
@@ -12,12 +12,11 @@ convert_one() {
     exit 1
   fi
   mkdir -p "$(dirname "$dest")"
-  cwebp -quiet -resize 540 0 "$src" -o "$dest"
+  cp "$src" "$dest"
   echo "Wrote $dest"
 }
 
-convert_one "$ART/cweek-home-zh-light-streak1.png" "$ROOT/site/assets/screens/cweek/01-home.webp"
-convert_one "$ART/cweek-home-zh-light-streak1.png" "$ROOT/site/assets/screens/zh/light/cweek/01-home.webp"
-convert_one "$ART/cweek-home-zh-dark-streak1.png" "$ROOT/site/assets/screens/zh/dark/cweek/01-home.webp"
-convert_one "$ART/cweek-home-en-light-streak1.png" "$ROOT/site/assets/screens/en/light/cweek/01-home.webp"
-convert_one "$ART/cweek-home-en-dark-streak1.png" "$ROOT/site/assets/screens/en/dark/cweek/01-home.webp"
+copy_one "$ART/cweek-home-zh-light-streak1.png" \
+  "$ROOT/fastlane/metadata/android/zh-CN/images/phoneScreenshots/01_home.png"
+copy_one "$ART/cweek-home-en-light-streak1.png" \
+  "$ROOT/fastlane/metadata/android/en-US/images/phoneScreenshots/01_home.png"

@@ -1,6 +1,6 @@
 [English](README.md) | **中文**
 
-[主页：Etai 应用集](https://etais.dev/#cweek)
+[下载与介绍页：etais.dev — C一周通](https://etais.dev/#cweek)
 
 # C一周通
 
@@ -10,22 +10,13 @@ A 7-day intensive Android course for beginners learning C, ending with Dijkstra 
 品牌名：**C一周通**（英文 C Week）  
 教学 IDE 演示是 **真实 VS Code 屏幕录像**（H.264，打包进 APK），用 Media3 播放，清单按时间轴跟随画面。示意图仅作无录像时的后备。
 
-## 主页 Homepage
+## 网站与下载 Website & downloads
 
-静态介绍页「Etai 应用集」（C一周通的功能、7 天路线、下载链接，以及另外两款应用的介绍）：**https://etais.dev**  
-源码在仓库 [`site/`](site/) 目录。主页按 URL 分语言：**中文** `/`、**英文** `/en/`（修改 `site/index.html` 或 FAQ/SEO 文案后运行 `node scripts/build-en-index.mjs` 重新生成英文页）；语言切换在两者间跳转（保留 hash）。**浅色 / 深色 / 跟随系统** 主题使用 `localStorage`；各应用版本号会尝试从 GitHub Releases 拉取（失败时保留页面内 fallback）。
+「Etai 应用集」营销站（功能介绍、APK 下载、隐私页等）线上地址：**[https://etais.dev](https://etais.dev)**。源码与部署在 **[gnatecheng/etais-web](https://github.com/gnatecheng/etais-web)**，**不在本仓库**。
 
-### 站点部署（Cloudflare Worker `etai`）
+本仓库仅维护 **C一周通 Android 应用**。发布新版本 APK 后，请在 **etais-web** 中按该仓库说明更新下载链接与页面文案。
 
-**唯一自动部署路径**：Cloudflare **Workers Builds**（Git 集成），在每次推送到 `main` 时根据仓库根目录的 [`wrangler.jsonc`](wrangler.jsonc) 部署 Worker 名称 **`etai`**，静态资源目录为 [`site/`](site/)，404 由 [`site/404.html`](site/404.html) 提供（`not_found_handling: 404-page`）。
-
-- 本地预览：`npx wrangler dev`（根目录）或任意静态服务器指向 `site/`。
-- 安全头与缓存规则：[`site/_headers`](site/_headers)（Workers 静态资源会读取）。`/css/*` 与 `/js/*` 缓存 7 天且 `immutable`；**修改任一 CSS/JS 文件后，必须在 [`site/index.html`](site/index.html) 与 [`site/404.html`](site/404.html) 里把对应 `?v=` 查询参数加 1**，否则回访用户会继续用旧脚本/样式。
-- **不要**再使用已删除的 GitHub Actions「Deploy site to Cloudflare Pages」工作流；该流程指向不存在的 Pages 项目且依赖未配置的 Secrets。
-
-### Cloudflare Web Analytics
-
-站点已启用 Cloudflare Web Analytics（beacon 在 [`site/index.html`](site/index.html)）。CSP 在 [`site/_headers`](site/_headers) 中允许 `static.cloudflareinsights.com` 与 `cloudflareinsights.com`。
+应用商店用截图与图标在 [`fastlane/metadata/android/`](fastlane/metadata/android/)。从 Roborazzi PNG 更新首页截图：[`scripts/update-cweek-home-screenshots.sh`](scripts/update-cweek-home-screenshots.sh)；重新导出图标：[`scripts/export-launcher-icons.py`](scripts/export-launcher-icons.py)。
 
 ### Release 签名与 GitHub Secrets
 
@@ -52,16 +43,6 @@ base64 -w0 release.keystore   # macOS/Linux；写入 GitHub Secret ANDROID_KEYST
 本地 release 构建（可选）：将 `release.keystore` 放在仓库根目录并设置环境变量 `ANDROID_KEYSTORE_FILE`、`ANDROID_KEYSTORE_PASSWORD`、`ANDROID_KEY_ALIAS`（及可选的 `ANDROID_KEY_PASSWORD`），然后 `./gradlew :app:assembleRelease`。**切勿**将 keystore 或密码提交到 Git。
 
 **Release 标签规范**：仅使用 `v1.4.0` 这类 semver 标签；不要用日期标签（如 `v20260928`）以免出现重复 Release。
-
-主页应用截图位于 `site/assets/screens/`（WebP，约 540px 宽），来自各应用调试版 APK 的真实 Compose 界面。首页按 **语言 × 主题** 加载 `/assets/screens/{zh|en}/{light|dark}/{app}/…`（缺则按 README 回退链）；旧路径 `screens/{app}/` 视为中文浅色。在无法使用 Android 模拟器 adb 截屏时，用 Roborazzi + Robolectric 在临时构建中录制（不提交到 Android 模块）。
-
-主页收录的应用：
-
-| 应用 | 简介 | 仓库 |
-| --- | --- | --- |
-| C一周通 | 7 天学会 C，从 Hello World 到 Dijkstra（本仓库） | [gnatecheng/c-week](https://github.com/gnatecheng/c-week) |
-| 轻记账 | 本地优先的个人记账（Room 本地存储，无需登录） | [gnatecheng/easy-ledger](https://github.com/gnatecheng/easy-ledger) |
-| 班级事务记录 | 单班出勤、缴费、费用分摊、清单 | [gnatecheng/group-matters](https://github.com/gnatecheng/group-matters) |
 
 ---
 

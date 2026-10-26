@@ -18,4 +18,3 @@ keystore.properties
 *.keystore
 .kotlin
 /tmp
-.wrangler/
