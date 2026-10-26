@@ -1,5 +1,7 @@
 /** HTML bodies for /privacy/ and /en/privacy/ (generated pages). */
 
+import { PUBLIC_CONTACT_EMAIL, PUBLIC_CONTACT_MAILTO } from "./site-contact.mjs";
+
 export const privacyBodyZh = `
 <p class="privacy-lead"><strong>一句话说明：</strong>这三个应用都是<strong>离线、无账号、无服务器</strong>的工具。默认不收集、不上传你的个人信息。数据只存在你手机本机；只有你主动导出、分享或备份时，文件才会离开手机。</p>
 <p><strong>生效日期：</strong>2026-10-13 · <strong>发布者：</strong>Ch Etang（Etai 应用集）</p>
@@ -45,7 +47,7 @@ export const privacyBodyZh = `
 <h3>政策变更</h3>
 <p>若本政策有实质变更，我们会更新本页的生效日期，并在合理范围内通过官网或应用更新说明提示。</p>
 <h3>联系方式</h3>
-<p>如有隐私相关问题，请通过官网 <a href="https://etais.dev/">https://etais.dev/</a> 或对应 GitHub 仓库的 Discussions / Issues 联系发布者。</p>
+<p>如有隐私相关问题，请发邮件至 <a href="${PUBLIC_CONTACT_MAILTO}">${PUBLIC_CONTACT_EMAIL}</a>，或访问 <a href="https://etais.dev/">etais.dev</a>；也可在对应 GitHub 仓库的 Discussions / Issues 中反馈。</p>
 `;
 
 export const privacyBodyEn = `
@@ -93,5 +95,5 @@ export const privacyBodyEn = `
 <h3>Changes</h3>
 <p>If this policy changes in a material way, we will update the effective date on this page and note it in release notes or on the website where practical.</p>
 <h3>Contact</h3>
-<p>For privacy questions, contact the publisher via <a href="https://etais.dev/en/">https://etais.dev/</a> or Discussions / Issues on the relevant GitHub repository.</p>
+<p>For privacy questions, email <a href="${PUBLIC_CONTACT_MAILTO}">${PUBLIC_CONTACT_EMAIL}</a> or visit <a href="https://etais.dev/en/">etais.dev</a>. You can also use Discussions / Issues on the relevant GitHub repository.</p>
 `;

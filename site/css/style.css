@@ -1367,6 +1367,15 @@ main > section.project:first-of-type {
   flex-shrink: 0;
 }
 
+.footer-contact {
+  margin: 0.65rem 0 0;
+  font-size: 0.82rem;
+}
+
+.footer-contact a {
+  color: var(--muted);
+}
+
 .site-footer.app-page-footer {
   padding: 2rem 0 2.5rem;
   font-size: 0.82rem;

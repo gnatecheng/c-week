@@ -15,6 +15,7 @@
     <link rel="icon" href="/favicon.ico?v=1" sizes="any" />
     <link rel="icon" href="/favicon.ico?v=1" sizes="any" />
     <link rel="icon" href="/favicon.ico?v=1" sizes="any" />
+    <link rel="icon" href="/favicon.ico?v=1" sizes="any" />
     <link rel="icon" href="/assets/icon.svg?v=1" type="image/svg+xml" />
     <link rel="icon" href="/assets/favicon-32.png?v=1" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=1" />
@@ -25,7 +26,7 @@
     <link rel="canonical" href="https://etais.dev/en/" />
     <meta name="theme-color" content="#0f766e" />
     <script src="/js/init-theme.js?v=4"></script>
-    <link rel="stylesheet" href="/css/style.css?v=33" />
+    <link rel="stylesheet" href="/css/style.css?v=34" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Etai Apps" data-i18n-content="meta.siteName" />
@@ -70,7 +71,16 @@
       "url": "https://etais.dev/en/",
       "name": "Etai Apps",
       "alternateName": "Etai 应用集",
-      "inLanguage": "en-US"
+      "inLanguage": "en-US",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hi@etais.dev",
+        "contactType": "customer support",
+        "availableLanguage": [
+          "zh-CN",
+          "en"
+        ]
+      }
     },
     {
       "@type": "SoftwareApplication",
@@ -176,7 +186,7 @@
             <div>
               <h2 id="qjz-title" class="project-title" data-i18n="qjz.hero.title">Easy Ledger</h2>
               <p class="lead" data-i18n-html="qjz.hero.lead">A personal finance Android app. Data <strong>stays on your phone</strong>, <strong>no login and no server</strong>; no accounts or cloud sync—backups leave the device only when you export or share them.</p>
-                                                        <div class="download-panel download-panel--qjz" data-app-meta="qingjizhang">
+                                                                      <div class="download-panel download-panel--qjz" data-app-meta="qingjizhang">
                 <div class="download-panel__body">
                   <div class="download-panel__left">
                   <div class="download-panel__head">
@@ -316,7 +326,7 @@
             <div>
               <h2 id="class-title" class="project-title" data-i18n="class.hero.title">Group Matters</h2>
               <p class="lead" data-i18n-html="class.hero.lead">Offline Android app for any small group—<strong>attendance, fee collection, cost splits, checklists</strong> (club, dorm, team, and more). Data stays on your phone, <strong>no account or network required</strong>.</p>
-                                                        <div class="download-panel download-panel--class" data-app-meta="group-matters">
+                                                                      <div class="download-panel download-panel--class" data-app-meta="group-matters">
                 <div class="download-panel__body">
                   <div class="download-panel__left">
                   <div class="download-panel__head">
@@ -454,7 +464,7 @@
           <div>
             <h2 class="hero-title" data-i18n="cweek.hero.title">C Week</h2>
             <p class="lead" data-i18n-html="cweek.hero.lead">In 7 days, take beginners from zero to writing <strong>Dijkstra shortest paths in C</strong> (arrays, pointers, and memory done right). Lessons include <strong>real VS Code screen recordings</strong> (H.264, bundled in the APK), Kotlin + Jetpack Compose, fully offline.</p>
-                                                      <div class="download-panel download-panel--cweek" data-app-meta="cweek">
+                                                                    <div class="download-panel download-panel--cweek" data-app-meta="cweek">
                 <div class="download-panel__body">
                   <div class="download-panel__left">
                   <div class="download-panel__head">
@@ -626,9 +636,10 @@
             ><span data-i18n="footer.linkClass">group-matters</span></a
           >
         </p>
+        <p class="footer-contact"><a href="mailto:hi@etais.dev" data-i18n="footer.contactEmail">hi@etais.dev</a></p>
       </div>
     </footer>
-    <script src="/js/translations.js?v=38" defer></script>
+    <script src="/js/translations.js?v=39" defer></script>
     <script src="/js/site.js?v=11" defer></script>
     <script src="/js/screens-lang.js?v=10" defer></script>
     <script src="/js/carousel.js?v=3" defer></script>

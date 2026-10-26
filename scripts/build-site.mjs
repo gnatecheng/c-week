@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 execSync("node scripts/sync-hub-download-panels.mjs", { cwd: root, stdio: "inherit" });
+execSync("node scripts/sync-hub-index-footer.mjs", { cwd: root, stdio: "inherit" });
 execSync("node scripts/build-app-pages.mjs", { cwd: root, stdio: "inherit" });
 execSync("node scripts/build-privacy-pages.mjs", { cwd: root, stdio: "inherit" });
 execSync("node scripts/sync-site-seo.mjs", { cwd: root, stdio: "inherit" });
