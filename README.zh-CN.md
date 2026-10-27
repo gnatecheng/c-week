@@ -44,6 +44,19 @@ base64 -w0 release.keystore   # macOS/Linux；写入 GitHub Secret ANDROID_KEYST
 
 **Release 标签规范**：仅使用 `v1.4.0` 这类 semver 标签；不要用日期标签（如 `v20260928`）以免出现重复 Release。
 
+配置 R2 Secrets 时，同一工作流还会把 **`c-week-version.json`** 上传到 `s3://etai-apk/c-week-version.json`（公网 **`https://dl.etais.dev/c-week-version.json`**），内容由本次发布的 `versionCode`、`versionName`、APK 链接及 Fastlane 中英文 changelog 片段生成。JSON 字段说明见 `app/src/main/java/com/py2c/week/update/RemoteVersionInfo.kt`。AAB **不会**上传到 R2。
+
+### 检查更新（仅设置页）
+
+应用**不会**在冷启动时自动检查更新。仅在 **设置 → 检查更新** 中，按 **安装来源** 分流：
+
+| 安装来源 | 行为 |
+| --- | --- |
+| **Google Play**（安装程序包名为 `com.android.vending`） | 使用 Google Play **应用内更新**（优先灵活/软更新）。 |
+| **侧载 / 官网 APK**（其他安装来源） | 请求 `https://dl.etais.dev/c-week-version.json`，与当前 `versionCode` 比较；若有新版本则展示可选更新说明，并在浏览器打开 APK 链接（JSON 的 `apkUrl`，或默认 `https://dl.etais.dev/c-week-{versionName}.apk`）。 |
+
+已是最新版本或网络异常时显示简短 Snackbar，不会崩溃。侧载渠道在用户主动点「检查更新」时使用 `INTERNET` 权限；Play 渠道走 Play Core。
+
 ---
 
 ## 功能 Features
@@ -54,7 +67,7 @@ base64 -w0 release.keystore   # macOS/Linux；写入 GitHub Secret ANDROID_KEYST
 - **实验多组用例**（1.4.0）：离线模拟评测对照多组输入/输出，显示通过组数与部分得分，并给出更具体的中文错因。不需要手机上的 gcc。
 - **学习报告**（1.4.0）：连续打卡、分天完成度、测验正确率，可用系统分享面板发出去。
 - **英文界面 + 完整英文课程**（1.5.0）：设置中切换中文 / English；Day 1–7 课文、测验提示、实验评测与 VS Code 演示文案均有英文版本。
-- **设置与关于**（1.5.0）：语言、浅色 / 深色 / 跟随系统主题、版本号、构建时间、开源仓库链接。
+- **设置与关于**（1.5.0）：语言、浅色 / 深色 / 跟随系统主题、版本号、构建时间、开源仓库链接；**检查更新**（Play 应用内更新 vs 官网 JSON）。
 - **英文单复数**（1.5.1）：连续打卡、测验题数、实验提示等带数量的英文文案改用 Android plurals，1 用单数、其余用复数（例如 “Streak 1 day” 不再写成 “1 days”）。
 - **课文播放**：中文讲解（含生活类比）、测验、**VS Code 实机录像**。第 1 天含路径/文件管理与 **逐条 bash**（pwd/ls/cd/… 及速查表）。
 - **代码实验**：应用内编辑 C 片段；**模拟运行**对照多组用例。答错时按类别给出中文错因（缺头文件、差一、指针、公式、TODO 空壳、BFS/Dijkstra 搞混等）。

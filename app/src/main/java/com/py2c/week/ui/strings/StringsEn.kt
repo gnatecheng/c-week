@@ -45,6 +45,13 @@ class StringsEn(private val resources: Resources) : AppStrings {
     override val aboutDescription = "C Week: a 7-day C intro with lessons, offline lab simulation, and quizzes."
 
     override val settingsPrivacyPolicy = "Privacy policy"
+    override val settingsCheckForUpdates = "Check for updates"
+    override val updateAlreadyLatest = "You're on the latest version"
+    override val updateCheckFailed = "Couldn't check for updates. Try again later."
+    override val updateAvailableTitle = "Update available"
+    override fun updateAvailableMessage(versionName: String) = "Version $versionName is available"
+    override val updateDownloadApk = "Download update"
+    override val updateOpenPlayStore = "Update on Google Play"
     override val privacyPolicyTitle = "Privacy policy"
     override val privacyPolicyOpenWeb = "Open full policy on the web"
     override val privacyNoticeTitle = "Privacy notice"

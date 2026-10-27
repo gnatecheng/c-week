@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Used only when the user taps Settings → Check for updates (sideload / website APK). -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".Py2CApplication"
         android:allowBackup="true"

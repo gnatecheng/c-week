@@ -167,6 +167,51 @@ jobs:
           fi
           echo "R2 mirror OK: https://dl.etais.dev/${APK_NAME} (sha256 ${LOCAL_SHA})"
 
+      - name: Upload c-week-version.json to Cloudflare R2 (etai-apk)
+        if: github.event_name == 'push'
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+        run: |
+          if [ -z "$R2_ACCESS_KEY_ID" ] || [ -z "$R2_SECRET_ACCESS_KEY" ] || [ -z "$R2_ACCOUNT_ID" ]; then
+            echo "::notice::R2 secrets missing; skipping c-week-version.json upload."
+            exit 0
+          fi
+          VERSION_NAME="${{ steps.version.outputs.name }}"
+          VERSION_CODE="${{ steps.version.outputs.code }}"
+          APK_NAME="${APK_NAME:?APK_NAME not set}"
+          CHANGELOG_ZH="fastlane/metadata/android/zh-CN/changelogs/${VERSION_CODE}.txt"
+          CHANGELOG_EN="fastlane/metadata/android/en-US/changelogs/${VERSION_CODE}.txt"
+          NOTES_ZH=""
+          NOTES_EN=""
+          if [ -f "$CHANGELOG_ZH" ]; then
+            NOTES_ZH=$(sed '/^[[:space:]]*$/d' "$CHANGELOG_ZH" | head -n 20 | jq -Rs .)
+          else
+            NOTES_ZH='""'
+          fi
+          if [ -f "$CHANGELOG_EN" ]; then
+            NOTES_EN=$(sed '/^[[:space:]]*$/d' "$CHANGELOG_EN" | head -n 20 | jq -Rs .)
+          else
+            NOTES_EN='""'
+          fi
+          jq -n \
+            --argjson versionCode "$VERSION_CODE" \
+            --arg versionName "$VERSION_NAME" \
+            --arg apkUrl "https://dl.etais.dev/${APK_NAME}" \
+            --argjson zh "$NOTES_ZH" \
+            --argjson en "$NOTES_EN" \
+            '{versionCode: $versionCode, versionName: $versionName, apkUrl: $apkUrl, releaseNotes: {zh: $zh, en: $en}}' \
+            > c-week-version.json
+          cat c-week-version.json
+          export AWS_ACCESS_KEY_ID="$R2_ACCESS_KEY_ID"
+          export AWS_SECRET_ACCESS_KEY="$R2_SECRET_ACCESS_KEY"
+          export AWS_DEFAULT_REGION=auto
+          aws s3 cp c-week-version.json "s3://etai-apk/c-week-version.json" \
+            --endpoint-url "https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com" \
+            --content-type application/json
+          echo "R2 version manifest OK: https://dl.etais.dev/c-week-version.json"
+
       - name: Manual run note
         if: github.event_name == 'workflow_dispatch'
         run: |

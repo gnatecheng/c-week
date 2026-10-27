@@ -48,6 +48,13 @@ interface AppStrings {
     val aboutDescription: String
 
     val settingsPrivacyPolicy: String
+    val settingsCheckForUpdates: String
+    val updateAlreadyLatest: String
+    val updateCheckFailed: String
+    val updateAvailableTitle: String
+    fun updateAvailableMessage(versionName: String): String
+    val updateDownloadApk: String
+    val updateOpenPlayStore: String
     val privacyPolicyTitle: String
     val privacyPolicyOpenWeb: String
     val privacyNoticeTitle: String

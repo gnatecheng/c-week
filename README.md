@@ -43,6 +43,19 @@ Optional local release build: put `release.keystore` in the repo root and set `A
 
 **Release tags:** use semver only (e.g. `v1.5.0`); do not use date tags (e.g. `v20260928`) to avoid duplicate releases.
 
+When R2 secrets are configured, the same workflow also uploads **`c-week-version.json`** to `s3://etai-apk/c-week-version.json` (public URL **`https://dl.etais.dev/c-week-version.json`**). The JSON is built from the release `versionCode`, `versionName`, APK URL, and Fastlane changelog snippets (zh/en). See `app/src/main/java/com/py2c/week/update/RemoteVersionInfo.kt` for the contract. AAB is **not** uploaded to R2.
+
+### Check for updates (Settings only)
+
+There is **no** automatic update check on app launch. In **Settings → Check for updates**, the app picks a channel from the **install source**:
+
+| Install source | Behavior |
+| --- | --- |
+| **Google Play** (`com.android.vending`) | Google Play **In-App Updates** (flexible / soft UX when available). |
+| **Sideload / website APK** (any other installer) | `GET https://dl.etais.dev/c-week-version.json`, compare `versionCode` to the installed app. If newer, show optional release notes and open the APK URL in the browser (from JSON `apkUrl`, or `https://dl.etais.dev/c-week-{versionName}.apk`). |
+
+Already on the latest version or network errors show a short snackbar; failures never crash the app. `INTERNET` is declared only for this user-initiated sideload check (Play uses Play Core).
+
 ---
 
 ## Features
@@ -53,7 +66,7 @@ Optional local release build: put `release.keystore` in the repo root and set `A
 - **Multi-case labs** (1.4.0): offline simulated grading against several I/O pairs, partial score and clearer feedback (no gcc on device).
 - **Learning report** (1.4.0): streak, per-day completion, quiz accuracy; share via system sheet.
 - **English UI + full English curriculum** (1.5.0): Settings → Chinese / English; Days 1–7 lessons, quiz hints, lab grading, VS Code demo copy in English.
-- **Settings & About** (1.5.0): language, light / dark / system theme, version, build time, open-source repo link.
+- **Settings & About** (1.5.0): language, light / dark / system theme, version, build time, open-source repo link; **Check for updates** (Play in-app updates vs website JSON on dl.etais.dev).
 - **English plural strings** (1.5.1): streaks, quiz counts, lab hints, and other quantity labels use correct singular/plural forms (e.g. “Streak 1 day” instead of “Streak 1 days”).
 - **Google Play / Coolapk readiness** (1.5.2): targetSdk 36, CI-signed AAB artifact, in-app privacy policy and one-time first-launch notice, Fastlane metadata, reproducible build timestamps.
 - **Lessons:** Chinese narration (with analogies), quizzes, **real VS Code recordings**. Day 1 includes paths/files and **step-by-step bash** (pwd/ls/cd/… plus cheat sheet).
