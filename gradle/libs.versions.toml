@@ -12,6 +12,7 @@ media3 = "1.4.1"
 junit = "4.13.2"
 roborazzi = "1.22.0"
 robolectric = "4.14.1"
+playAppUpdate = "2.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +39,8 @@ roborazzi = { group = "io.github.takahirom.roborazzi", name = "roborazzi", versi
 roborazzi-compose = { group = "io.github.takahirom.roborazzi", name = "roborazzi-compose", version.ref = "roborazzi" }
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+play-app-update = { group = "com.google.android.play", name = "app-update", version.ref = "playAppUpdate" }
+play-app-update-ktx = { group = "com.google.android.play", name = "app-update-ktx", version.ref = "playAppUpdate" }
 
 [plugins]
 roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }

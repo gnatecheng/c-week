@@ -43,6 +43,13 @@ object StringsZh : AppStrings {
     override val aboutDescription = "C一周通：7 天 C 语言入门，含微课、离线实验模拟与测验。"
 
     override val settingsPrivacyPolicy = "隐私政策"
+    override val settingsCheckForUpdates = "检查更新"
+    override val updateAlreadyLatest = "当前已是最新版本"
+    override val updateCheckFailed = "无法检查更新，请稍后再试"
+    override val updateAvailableTitle = "发现新版本"
+    override fun updateAvailableMessage(versionName: String) = "新版本 $versionName 可供下载"
+    override val updateDownloadApk = "下载更新"
+    override val updateOpenPlayStore = "在 Google Play 中更新"
     override val privacyPolicyTitle = "隐私政策"
     override val privacyPolicyOpenWeb = "在浏览器中打开完整网页版"
     override val privacyNoticeTitle = "隐私说明"

@@ -349,6 +349,10 @@ class PrivacyUiRoborazziTest {
             }
         }
         composeRule.waitForIdle()
+        composeRule
+            .onNodeWithText(strings.settingsCheckForUpdates)
+            .performScrollTo()
+        composeRule.waitForIdle()
         composeRule.onRoot().captureRoboImage(output)
     }
 
